@@ -1,0 +1,112 @@
+server:
+  port: 8455
+  vip-server: http://api-vip/
+spring:
+  application:
+    name: api-ifs
+  datasource:
+
+    #ifs
+    ifs: java:comp/env/api-ifs
+
+    #vip
+    vip: java:comp/env/api-vip
+
+    #icc
+    icc: java:comp/env/api-icc
+
+    #fvc
+    fvc: java:comp/env/api-fvc
+
+    #crm
+    crm: java:comp/env/api-crm
+
+    #bak  vip和ifs可以联库查询
+    bak: java:comp/env/api-bak
+
+    druid:
+      # 配置控制统计拦截的filters，去掉后监控界面sql将无法统计，wall用于防火墙
+      filter: stat,wall
+      # 最大活跃数
+      max-active: 4096
+      # 初始化数量
+      initial-size: 4096
+      # 最小连接池数量
+      min-idle: 4096
+      # 最大连接等待超时时间
+      max-wait: 60000
+      # 打开PSCache，并且指定每个连接PSCache的大小，mysql可以设置为false
+      pool-prepared-statements: false
+      max-pool-prepared-statement-per-connection-size: 100
+      # 配置间隔多久才进行一次检测，检测需要关闭的空间连接，单位是毫秒
+      time-between-eviction-runs-millis: 2000
+      # 用来检测连接是否有效
+      validation-query: SELECT 1
+      test-while-idle: true
+      test-on-borrow: false
+      test-on-return: false
+      async-init: true
+      min-evictable-idle-time-millis: 600000
+      max-evictable-idle-time-millis: 900000
+      keep-alive: true
+      phy-timeout-millis: 1000
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss  # json时间格式
+    time-zone: GMT+8
+  # tk.mybatis
+  mybatis:
+    type-aliases-package: com.znlh.ifs.dal.vip.mapper
+    mapper-locations: classpath:mapper/**/*.xml
+  rabbitmq:
+    addresses: rabbitmq.znlhzl.org
+    port: 5672
+    username: admin
+    password: admin
+    publisher-confirms: true
+    virtual-host: /
+    listener:
+      simple:
+        acknowledge-mode: manual # 手动模式
+
+#开启熔断和限流
+feign:
+  hystrix:
+    enabled: true
+  ribbon:
+    enabled: true
+
+hystrix:
+  metrics:
+    enabled: true
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000
+        timeout:
+          enabled: false
+
+ribbon:
+  ReadTimeout: 60000
+  ConnectTimeout: 60000
+
+
+
+# 日志
+logging:
+  level:
+    com.znlh: DEBUG
+    org.springframework: INFO
+  file: ../logs/logback-${spring.application.name}.log
+
+#eureka:
+#  client:
+#    serviceUrl:
+#      defaultZone: http://reg1:8761/eureka/
+#    fetch-registry: true
+#    register-with-eureka: false
+#  instance:
+#    prefer-ip-address: true
+
+
