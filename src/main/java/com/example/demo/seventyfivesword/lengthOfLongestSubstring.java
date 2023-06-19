@@ -1,5 +1,8 @@
 package com.example.demo.seventyfivesword;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * 无重复字符的最长子串
  */
@@ -28,6 +31,18 @@ public class lengthOfLongestSubstring {
      */
 
     public static void main(String[] args) {
-
+        String s = "abcabcbb";
+        int max = 0;
+        int left = 0;
+        Map<Character,Integer> map = new HashMap<>();
+        for (int i = 0; i < s.length(); i++){
+            if (map.containsKey(s.charAt(i))){
+                //以重复元素第一次出现的位置和left比较，确认无重复字符串的起点
+                left = Math.max(left,map.get(s.charAt(i)+1));
+            }
+            map.put(s.charAt(i),i);
+            max = Math.max(max,i - left + 1);
+        }
+        return;
     }
 }
