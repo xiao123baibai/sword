@@ -60,7 +60,7 @@ public class DeleteNode {
         n3.next = n4;
         n4.next = n5;
         n5.next = n6;
-        ListNode result = deleteNode(n1,-3);
+        ListNode result = deleteNode(n1,-6);
 
     }
 }
