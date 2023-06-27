@@ -9,11 +9,22 @@ import java.util.Set;
 public class GetIntersectionNode {
     /**
      * 输入两个链表，找出它们的第一个公共节点
+     *
+     * 理解一下什么是公共节点
      */
 
     //思路：双指针法
     ListNode getIntersectionNode1(ListNode headA, ListNode headB) {
-        return null;
+        if (headA == null || headB == null){
+            return null;
+        }
+        ListNode tempA = headA;
+        ListNode tempB = headB;
+        while (tempA != tempB){
+            tempA = (tempA == null ? headB:tempA.next);
+            tempB = (tempB == null ? headA:tempB.next);
+        }
+        return tempB;
     }
 
     //遍历
