@@ -1,5 +1,7 @@
 package com.example.demo.seventyfivesword;
 
+import lombok.Data;
+
 import java.util.Comparator;
 import java.util.Deque;
 import java.util.LinkedList;
@@ -89,4 +91,57 @@ public class MaxSlidingWindow {
         }
         return arr;
     }
+
+    public int[] maxSlidingWindow2(int[] nums,int k){
+        if (nums.length == 0) return nums;
+        Deque<Integer> deque = new LinkedList<>();
+        int[] result = new int[nums.length - k + 1];
+        int index = 0;
+        //窗口未形成的场景
+        for (int i = 0;i < k; i++){
+            while (deque.size() > 0 && nums[i] > deque.peekLast()){
+                deque.removeLast();
+            }
+            deque.addLast(nums[i]);
+        }
+        result[index++] = deque.peekFirst();
+        //窗口已形成的场景
+        for (int j = k;j < nums.length; j++){
+            //窗口移动，删除前置节点
+            if (deque.peekFirst() == nums[j-k]){
+                deque.removeFirst();
+            }
+            //保证数组的降序
+            while (deque.size() > 0 && nums[j] > deque.peekLast()){
+                deque.removeLast();
+            }
+            deque.addLast(nums[j]);
+            result[index++] = deque.peekFirst();
+        }
+        return result;
+    }
+
+    public static void main(String[] args) {
+        Integer p = 1;
+        aaa(p);
+        System.out.println(p);
+    }
+
+    public static void aaa(Integer p) {
+        p = 2;
+    }
+
+    @Data
+    static class Person {
+        private int age;
+
+        public int getAge() {
+            return age;
+        }
+
+        public void setAge(int age) {
+            this.age = age;
+        }
+    }
 }
+
