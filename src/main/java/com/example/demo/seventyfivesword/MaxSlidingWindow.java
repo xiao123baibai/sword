@@ -92,6 +92,7 @@ public class MaxSlidingWindow {
         return arr;
     }
 
+    //单调队列
     public int[] maxSlidingWindow2(int[] nums,int k){
         if (nums.length == 0) return nums;
         Deque<Integer> deque = new LinkedList<>();
@@ -120,7 +121,34 @@ public class MaxSlidingWindow {
         }
         return result;
     }
-
+    //优先队列
+    public int[] maxSlidingWindow3(int[] nums,int k){
+        if (nums.length == 0){
+            return nums;
+        }
+        int n = nums.length;
+        int[] ans = new int[n-k+1];
+        PriorityQueue<int[]> pq = new PriorityQueue(new Comparator<int[]>() {
+            @Override
+            public int compare(int[] p1, int[] p2) {
+                return p1[0] != p2[0] ? p2[0] - p1[0] : p2[1] - p1[1];
+            }
+        });
+        //先将前k的元素放入优先队列排序
+        for (int i = 0; i < k;i++){
+            pq.offer(new int[]{nums[i],i});
+        }
+        ans[0] = pq.peek()[0];
+        //形成滑动窗口，并处理左边出界问题
+        for (int i = k;i < n;i++){
+            pq.offer(new int[]{nums[i],i});
+            while (pq.peek()[i] <= n-k){
+                pq.poll();
+            }
+            ans[i-k+1] = pq.peek()[0];
+        }
+        return ans;
+    }
     public static void main(String[] args) {
         Integer p = 1;
         aaa(p);
