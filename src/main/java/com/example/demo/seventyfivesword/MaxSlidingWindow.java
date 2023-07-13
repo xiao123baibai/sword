@@ -150,9 +150,9 @@ public class MaxSlidingWindow {
         return ans;
     }
     public static void main(String[] args) {
-        Integer p = 1;
-        aaa(p);
-        System.out.println(p);
+        Person person = new Person();
+        person.setName(new String("-1"));
+        System.out.println("结果："+((person.getName()) == "-1"));
     }
 
     public static void aaa(Integer p) {
@@ -161,14 +161,14 @@ public class MaxSlidingWindow {
 
     @Data
     static class Person {
-        private int age;
+        private String name;
 
-        public int getAge() {
-            return age;
+        public String getName() {
+            return name;
         }
 
-        public void setAge(int age) {
-            this.age = age;
+        public void setName(String name) {
+            this.name = name;
         }
     }
 }
