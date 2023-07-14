@@ -23,21 +23,19 @@ public class MissingNumber {
      */
     public static int missingNumber(int[] nums) {
         int i = 0, j = nums.length - 1;
-        int ans = -1;
         while (i <= j){
             int m = (i + j) / 2;
             if (nums[m] == m){
                 i = m + 1;
             }else {
-                j = m;
+                j = m - 1;
             }
-            ans = m;
         }
-        return ans;
+        return i;
     }
 
     public static void main(String[] args) {
-        int[] nums = new int[]{0,1,2,3,4,5,6,7,9};
+        int[] nums = new int[]{0,1,3};
         int ans = missingNumber(nums);
     }
 }
