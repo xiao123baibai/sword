@@ -31,4 +31,23 @@ public class Search {
         }
         return count;
     }
+
+    //二分查找法
+
+    public int search1(int[] nums,int target){
+        return helper(nums,target) - helper(nums,target-1);
+    }
+
+    private int helper(int[] nums, int target){
+        int i = 0,j = nums.length - 1;
+        while (i <= j){
+            int m = (i + j)/2;
+            if (j >= 0 && nums[m] <= target){
+                i = m + 1;
+            }else {
+                j = m - 1;
+            }
+        }
+        return i;
+    }
 }
