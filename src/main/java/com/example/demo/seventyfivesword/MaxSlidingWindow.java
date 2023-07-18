@@ -1,6 +1,5 @@
 package com.example.demo.seventyfivesword;
 
-import lombok.Data;
 
 import java.util.Comparator;
 import java.util.Deque;
@@ -158,8 +157,6 @@ public class MaxSlidingWindow {
     public static void aaa(Integer p) {
         p = 2;
     }
-
-    @Data
     static class Person {
         private String name;
 
