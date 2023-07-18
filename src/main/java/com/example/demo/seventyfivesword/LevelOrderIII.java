@@ -3,6 +3,7 @@ package com.example.demo.seventyfivesword;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 
 /**
  * 从上到下打印二叉树 III
@@ -31,6 +32,31 @@ public class LevelOrderIII {
      */
     public List<List<Integer>> levelOrder(TreeNode root) {
         List<List<Integer>> res = new ArrayList<>();
+        Queue<TreeNode> queue = new LinkedList<>();
+        if (root != null){
+            queue.add(root);
+        }
+        int l = 0;
+        while (!queue.isEmpty()){
+            LinkedList<Integer> temp = new LinkedList<>();
+            //每一层循环的时候都是要先划定每次的范围，所以要递减
+            for (int i = queue.size();i > 0; i--){
+                TreeNode treeNode = queue.poll();
+                if (l%2 == 0){
+                    temp.addLast(treeNode.val);
+                }else {
+                    temp.addFirst(treeNode.val);
+                }
+                if (treeNode.left != null){
+                    queue.add(treeNode.left);
+                }
+                if (treeNode.right != null){
+                    queue.add(treeNode.right);
+                }
+            }
+            res.add(temp);
+            l++;
+        }
         return res;
     }
 
