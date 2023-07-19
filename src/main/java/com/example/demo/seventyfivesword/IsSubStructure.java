@@ -123,14 +123,17 @@ public class IsSubStructure {
         return null;
     }
 
-    public boolean isSubStructure(TreeNode A,TreeNode B){
+    //递归迭代法，寻找对应的节点信息
+
+    public boolean isSubStructure2(TreeNode A,TreeNode B){
+        //边界判断
         if (A == null || B == null){
             return false;
         }
-        if (A.val == B.val &&(helper(A.left, B.left) && helper(A.right,B.right))){
-            return true;
-        }
-        return isSubStructure(A.left,B) || isSubStructure(A.right,B);
+        //true成立需要满足的条件
+
+        //判断下面的节点是否满足
+        return helper(A,B) || isSubStructure2(A.left,B) || isSubStructure2(A.right,B);
     }
 
     private boolean helper(TreeNode A1,TreeNode B1){
@@ -142,10 +145,31 @@ public class IsSubStructure {
         if (A1 == null){
             return false;
         }
+        //递归判断
         if (A1.val == B1.val &&(helper(A1.left, B1.left) && helper(A1.right,B1.right))){
             return true;
         }else {
             return false;
         }
+    }
+
+    private boolean help(TreeNode A1,TreeNode B1){
+        if (B1 == null){
+            return true;
+        }
+        if (A1 == null){
+            return false;
+        }
+        if (A1.val == B1.val && (help(A1.left,B1.left) && help(A1.right,B1.right))){
+            return true;
+        }else {
+            return false;
+        }
+    }
+    public boolean isSubStructure(TreeNode A,TreeNode B){
+        if (A == null || B == null){
+            return false;
+        }
+        return help(A,B) || isSubStructure(A.left,B) || isSubStructure(A.right,B);
     }
 }
