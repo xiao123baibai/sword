@@ -28,7 +28,7 @@ public class MovingCount {
      * 1 <= n,m <= 100
      * 0 <= k <= 20
      */
-    //思路错误地方，机器人走过某一个之后，就需要进行剪枝操作，导致部分位置不能去  todo 机器人不能飞
+    //思路错误地方，机器人走过某一个之后，就需要进行剪枝操作，导致部分位置不能去  todo 机器人不能飞  需要继续思考
     public static int movingCount1(int m, int n, int k){
         if(k == 0){
             return 1;
