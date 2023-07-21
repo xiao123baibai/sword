@@ -38,11 +38,24 @@ public class PathSum {
         path.add(root.val);
         sum -= root.val;
         if (sum == 0 && root.left == null && root.right == null){
+            //path一直在被复用，递归结束后会删除节点，导致path为空
             res.add(new LinkedList(path));
         }
         recur(root.left,sum);
         recur(root.right,sum);
         path.removeLast();
+    }
+
+    public static void main(String[] args) {
+        LinkedList<List<Integer>> res = new LinkedList<>();
+        LinkedList<Integer> path = new LinkedList<>();
+        path.add(5);
+        path.add(4);
+        path.add(11);
+        path.add(2);
+        System.out.println(path);
+        path.removeLast();
+        System.out.println(path.removeLast());
     }
 }
 class TreeNodeNew {
