@@ -103,6 +103,9 @@ public class MovingCount {
     }
 
     public static void main(String[] args) {
-        movingCount1(15,15,2);
+        boolean a = true;
+        boolean b = true;
+
+        System.out.println(a|=b);
     }
 }
