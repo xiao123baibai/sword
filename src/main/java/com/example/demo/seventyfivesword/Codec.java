@@ -1,5 +1,7 @@
 package com.example.demo.seventyfivesword;
 
+import java.util.LinkedList;
+
 /**
  * 序列化二叉树
  */
@@ -25,12 +27,47 @@ public class Codec {
      */
     // Encodes a tree to a single string.
     public String serialize(TreeNode root) {
-
+        if (root == null){
+            return null;
+        }
+        LinkedList<TreeNode> queue = new LinkedList<TreeNode>(){{add(root);}};
+        StringBuilder str = new StringBuilder("[");
+        while (!queue.isEmpty()){
+            TreeNode temp = queue.poll();
+            if (temp != null){
+                str.append(temp.val + ",");
+                queue.add(temp.left);
+                queue.add(temp.right);
+            }else {
+                str.append("null,");
+            }
+        }
+        str.deleteCharAt(str.length() - 1);
+        str.append("]");
+        return str.toString();
     }
 
     // Decodes your encoded data to tree.
     public TreeNode deserialize(String data) {
-
+        if(data.equals("[]")) return null;
+        String[] values = data.substring(1,data.length()-1).split(",");
+        TreeNode root = new TreeNode(Integer.valueOf(values[0]));
+        LinkedList<TreeNode> queue = new LinkedList<TreeNode>(){{add(root);}};
+        int i = 1;
+        while (!queue.isEmpty()){
+            TreeNode node = queue.poll();
+            if(!values[i].equals("null")) {
+                node.left = new TreeNode(Integer.valueOf(values[i]));
+                queue.add(node.left);
+            }
+            i++;
+            if(!values[i].equals("null")) {
+                node.right = new TreeNode(Integer.valueOf(values[i]));
+                queue.add(node.right);
+            }
+            i++;
+        }
+        return root;
     }
 
 }
