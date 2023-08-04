@@ -1,5 +1,7 @@
 package com.example.demo.seventyfivesword;
 
+import java.util.Stack;
+
 /**
  * 重建二叉树
  */
@@ -26,5 +28,25 @@ public class BuildTree {
         if (preorder == null || preorder.length == 0){
             return null;
         }
+        Stack<TreeNode> stack = new Stack<>();
+        TreeNode root = new TreeNode(preorder[0]);
+        stack.push(root);
+        int inorderindex = 0;
+        for (int i = 1;i < preorder.length;i++){
+            int preorderval = preorder[i];
+            TreeNode node = stack.peek();
+            if (node.val != inorder[inorderindex]){
+                node.left = new TreeNode(preorder[i]);
+                stack.push(node.left);
+            }else {
+                while (!stack.isEmpty() && stack.peek().val == inorder[inorderindex]){
+                    node = stack.pop();
+                    inorderindex++;
+                }
+                node.right = new TreeNode(preorderval);
+                stack.push(node.right);
+            }
+        }
+        return root;
     }
 }
