@@ -1,5 +1,7 @@
 package com.example.demo.seventyfivesword;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Stack;
 
 /**
@@ -24,7 +26,7 @@ public class BuildTree {
      * Output: [-1]
      */
     //战歌走起：前后定根，中分左右
-    public TreeNode buildTree(int[] preorder, int[] inorder) {
+    public TreeNode buildTree1(int[] preorder, int[] inorder) {
         if (preorder == null || preorder.length == 0){
             return null;
         }
@@ -48,5 +50,26 @@ public class BuildTree {
             }
         }
         return root;
+    }
+    int[] preorder;
+    Map<Integer,Integer> map = new HashMap<>();
+    public TreeNode buildTree(int[] preorder,int[] inorder){
+        this.preorder = preorder;
+        for (int i = 0; i < inorder.length; i++){
+            map.put(inorder[i],i);
+        }
+        return recur(0,0,inorder.length-1);
+
+    }
+
+    private TreeNode recur(int root,int left,int right){
+        if (left>right){
+            return null;
+        }
+        TreeNode node = new TreeNode(preorder[root]);
+        int i = map.get(preorder[root]);
+        node.left = recur(root+1,left,i-1);
+        node.right = recur(root + i + 1 - left,i+1,right);
+        return node;
     }
 }
