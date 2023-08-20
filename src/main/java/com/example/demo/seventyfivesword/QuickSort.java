@@ -13,7 +13,7 @@ public class QuickSort {
             return arr;
         }
         int piovt = arr[low];//将第一个数定位基准
-        while (low < high){
+        while (low < high){//双层循环实现位置交互
             while (low < high && piovt <= arr[high]){//右边的数组比基准数大
                 high--;
             }
