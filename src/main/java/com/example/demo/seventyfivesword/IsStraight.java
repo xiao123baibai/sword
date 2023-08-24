@@ -78,6 +78,11 @@ public class IsStraight {
         sort(arr, head + 1, right);
         return arr;
     }
+    //思路2:除大小王外，所有牌 无重复 ；
+    //设此 555 张牌中最大的牌为 maxmaxmax ，最小的牌为 minminmin （大小王除外），则需满足：
+    //max−min<5max - min < 5
+    //max−min<5
+    //
 
     public static void main(String[] args) {
         int[] arr = new int[]{0,0,1,2,5};
