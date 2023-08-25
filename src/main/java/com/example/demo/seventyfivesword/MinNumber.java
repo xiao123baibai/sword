@@ -25,7 +25,7 @@ public class MinNumber {
         for (int i = 0; i < nums.length; i ++){
             strs[i] = String.valueOf(nums[i]);
         }
-        Arrays.sort(strs,(x,y)->(x+y).compareTo(y+x));
+        Arrays.sort(strs);
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < nums.length; i ++){
             sb.append(strs[i]);
