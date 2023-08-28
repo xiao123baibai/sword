@@ -25,13 +25,10 @@ public class Fib {
      * 输出：5
      */
     public int fib(int n){
-        if (n < 2){
-            return n;
-        }
-        int l = 0;
-        int r = 0;
-        int res = 1;
-        for (int i = 2; i <= n;i++){
+        int res = 0;
+        int l;
+        int r = 1;
+        for (int i = 0;i < n;i++){
             l = r;
             r = res;
             res = (l+r)%1000000007;
