@@ -16,5 +16,12 @@ public class mysqlPractice {
      * alter table add constraint emp_dept_fk foreign key（user_id） reference department(id)
      *
      *
+     * 增加索引
+     * create index indexName on tableName(columnName(length))
+     *
+     * alter table tableName add index  indexName(columnName)
+     *
+     * index indexName(columnName(length))
+     *
      */
 }
