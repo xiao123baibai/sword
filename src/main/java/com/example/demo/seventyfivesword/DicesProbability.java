@@ -1,5 +1,6 @@
 package com.example.demo.seventyfivesword;
 
+import java.math.BigDecimal;
 import java.util.Arrays;
 
 /**
@@ -98,6 +99,10 @@ public class DicesProbability {
             ans[i - n] = dp[1 - flag][i] / totalnum;
         }
         return ans;
+    }
+
+    public static void main(String[] args) {
+        System.out.println(BigDecimal.ZERO);
     }
 
 }
