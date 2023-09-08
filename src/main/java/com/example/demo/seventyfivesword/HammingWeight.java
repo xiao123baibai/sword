@@ -40,7 +40,9 @@ public class HammingWeight {
     public int hammingWeight(int n) {
         int sum = 0;
         while (n!=0){
+            //相当于取模
             sum +=n&1;
+            //相当于除以2
             n>>>=1;
         }
         return sum;
