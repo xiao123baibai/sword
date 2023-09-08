@@ -22,6 +22,11 @@ public class Add {
      */
     //思路：位运算
     public int add(int a, int b) {
-        return a&b;
+        while (b!=0){
+            int c = (a&b)<<1;
+            a ^= b;
+            b = c;
+        }
+        return a;
     }
 }
