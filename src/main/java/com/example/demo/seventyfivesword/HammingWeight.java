@@ -36,6 +36,7 @@ public class HammingWeight {
      *
      * 输入必须是长度为 32 的 二进制串 。
      */
+    //思路：逐位判断
     // you need to treat n as an unsigned value
     public int hammingWeight(int n) {
         int sum = 0;
@@ -44,6 +45,17 @@ public class HammingWeight {
             sum +=n&1;
             //相当于除以2
             n>>>=1;
+        }
+        return sum;
+    }
+    //思路：巧用n&(n-1)
+    public int hammingWeight1(int n) {
+        int sum = 0;
+        while (n!=0){
+            //相当于取模
+            sum++;
+            //相当于除以2
+            n&=(n-1);
         }
         return sum;
     }
