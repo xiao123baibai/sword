@@ -43,4 +43,20 @@ public class MajorityElement {
         }
         return res;
     }
+    //摩尔算法--投票
+    public int majorityElement2(int[] nums) {
+        int x = 0,votes = 0,count = 0;
+        for (int num : nums){
+            if (votes == 0){
+                x = num;
+            }
+            votes += x == num ? 1:-1;
+        }
+        for (int num :nums){
+            if (x == num){
+                count++;
+            }
+        }
+        return count > nums.length/2 ? x:0;
+    }
 }
