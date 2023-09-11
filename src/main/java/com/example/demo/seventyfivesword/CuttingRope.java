@@ -23,7 +23,7 @@ public class CuttingRope {
      *
      * 2 <= n <= 58
      */
-    //思路：可以考虑乘机数组的能力，需要解决的是绳子剪成m端怎么划分
+    //思路：可以考虑乘机数组的能力，需要解决的是绳子剪成m端怎么划分  数学知识，函数极值证明
     public int cuttingRope(int n) {
         if(n <= 3){
             return n-1;
