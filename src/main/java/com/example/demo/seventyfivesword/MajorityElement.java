@@ -44,6 +44,8 @@ public class MajorityElement {
         return res;
     }
     //摩尔算法--投票
+    //假设1：若为众数则票数+1，非众数则票数-1，若存在众数，则所有数字的票数的和一定>0
+    //假设2：若数组的前a个数字的和为0，则数组剩余的（n-a）个数字的票数和一定>0,则后（n-a）个数字的众数仍为x
     public int majorityElement2(int[] nums) {
         int x = 0,votes = 0,count = 0;
         for (int num : nums){
