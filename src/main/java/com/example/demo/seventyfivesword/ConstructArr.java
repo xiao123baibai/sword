@@ -26,6 +26,7 @@ public class ConstructArr {
      */
     //思路：双层循环
     public static int[] constructArr1(int[] a) {
+        //存在超时的情况
         int len = a.length;
         if (len == 0){
             return new int[0];
