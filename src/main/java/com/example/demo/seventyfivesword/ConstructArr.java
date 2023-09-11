@@ -47,7 +47,7 @@ public class ConstructArr {
         int[] a = new int[]{1,2,3,4,5};
         constructArr1(a);
     }
-    //学习到的思路：左右乘机列表
+    //学习到的思路：左右乘机列表，可进行简化
     public int[] constructArr2(int[] a) {
         int length = a.length;
         if (length == 0){
