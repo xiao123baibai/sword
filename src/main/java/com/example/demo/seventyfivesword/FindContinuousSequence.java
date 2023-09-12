@@ -46,4 +46,27 @@ public class FindContinuousSequence {
         }
         return res.toArray(new int[res.size()][]);
     }
+    //思路2:双指针法--滑动窗口
+    public int[][] findContinuousSequence1(int target){
+        List<int[]> res = new ArrayList<>();
+        int l = 1,r = 2,sum = 3;
+        while (l <r){
+            if (sum < target){
+                r++;//因为要加，所以提前++
+                sum += r;
+            }else if (sum > target){
+                sum -= l;//因为要减，所以先减后减减
+                l++;
+            }else {
+                int[] sub = new int[r-l+1];
+                for (int k= l; k<=r;k++){
+                    sub[k-l]=k;
+                }
+                res.add(sub);
+                sum -= l;
+                l++;
+            }
+        }
+        return res.toArray(new int[res.size()][]);
+    }
 }
