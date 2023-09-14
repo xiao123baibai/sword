@@ -62,4 +62,32 @@ public class RemoveDuplicates2 {
         }
         return slow;
     }
+    public int removeDuplicates1(int[] nums) {
+        if (nums.length<=1){
+            return nums.length;
+        }
+        int fast = 2;
+        int slow = 2;
+        while (fast < nums.length){
+            if (nums[fast]!=nums[slow-2]){
+                nums[slow] = nums[fast];
+                slow ++;
+            }
+            fast++;
+        }
+        return slow;
+    }
+    //水宫三叶的通用思路：
+    public int removeDuplicates2(int[] nums){
+        return process(nums,2);
+    }
+    private int process(int[] nums,int k){
+        int n = 0;
+        for (int num:nums){
+            if (n < k || nums[n-k] != num){
+                nums[n++] = num;
+            }
+        }
+        return n;
+    }
 }
