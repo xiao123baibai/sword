@@ -50,7 +50,7 @@ public class QuickSort {
             }
             arr[low] = arr[high];
             if (low < high&&pivot>=arr[low]){
-                low--;
+                low++;
             }
             arr[high] = arr[low];
         }

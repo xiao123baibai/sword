@@ -57,15 +57,30 @@ public class RemoveDuplicates {
                 right--;
             }
         }
-        int[] sort = new int[left];
-        for (int i = 0; i < left;i++){
-            sort[i] = nums[i];
-        }
-        Arrays.sort(sort);
-        for (int i = 0; i < left;i++){
-            nums[i] = sort[i];
-        }
+        sort1(nums,0,left);
         return left;
+    }
+    public int[] sort1(int[] arr,int left, int right){
+        int low = left;
+        int high = right;
+        if (low>=right){
+            return new int[0];
+        }
+        int pivot = arr[low];
+        while (low < high){
+            if (low < high&&pivot<=arr[high]){
+                high--;
+            }
+            arr[low] = arr[high];
+            if (low < high&&pivot>=arr[low]){
+                low--;
+            }
+            arr[high] = arr[low];
+        }
+        arr[low] = pivot;
+        sort1(arr,left,low-1);
+        sort1(arr,low+1,right);
+        return arr;
     }
     //双指针思路优化，
     public int removeDuplicates1(int[] nums){
