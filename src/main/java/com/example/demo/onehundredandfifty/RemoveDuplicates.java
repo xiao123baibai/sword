@@ -1,6 +1,5 @@
-package com.example.demo.onhundredandfifty;
+package com.example.demo.onehundredandfifty;
 
-import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 
