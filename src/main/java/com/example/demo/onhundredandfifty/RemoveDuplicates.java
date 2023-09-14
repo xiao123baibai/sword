@@ -68,4 +68,18 @@ public class RemoveDuplicates {
         return left;
     }
     //双指针思路优化，
+    public int removeDuplicates1(int[] nums){
+        if (nums.length <=1){
+            return nums.length;
+        }
+        int fast = 1,slow = 1;
+        while (fast < nums.length){
+            if (nums[fast]!= nums[fast - 1]){
+                nums[slow] = nums[fast];
+                slow++;
+            }
+            fast++;
+        }
+        return slow;
+    }
 }
