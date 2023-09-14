@@ -18,7 +18,7 @@ public class QuickSort {
                 high--;
             }
             arr[low] = arr[high];//右边小于基准数的元素与左边位置的交互
-            while (low < high && piovt >= arr[low]){//左边的数据比急哦准数小
+            while (low < high && piovt >= arr[low]){//左边的数据比基准数小
                 low++;
             }
             arr[high] = arr[low];////左边小于基准数的元素与右边位置的交互
@@ -35,5 +35,28 @@ public class QuickSort {
         int[] arr = new int[]{6,2,3,1,5};
         q.sort(arr,0,arr.length - 1);
         System.out.println(Arrays.toString(arr));
+    }
+
+    public int[] sort1(int[] arr,int left, int right){
+        int low = left;
+        int high = right;
+        if (low>=right){
+            return new int[0];
+        }
+        int pivot = arr[low];
+        while (low < high){
+            if (low < high&&pivot<=arr[high]){
+                high--;
+            }
+            arr[low] = arr[high];
+            if (low < high&&pivot>=arr[low]){
+                low--;
+            }
+            arr[high] = arr[low];
+        }
+        arr[low] = pivot;
+        sort1(arr,left,low-1);
+        sort1(arr,low+1,right);
+        return arr;
     }
 }
