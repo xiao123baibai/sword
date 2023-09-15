@@ -39,7 +39,7 @@ public class Rotate {
         for (int i = 0;i < n; i++){
             int num = (i+k)%n;
             //temp[i] = nums[num];
-            temp[num] = nums[i];//为什么上面是错误的，因为是数组的第一位向后唯一三位
+            temp[num] = nums[i];//为什么上面是错误的，因为是数组的第一位向后位移三位
         }
         for (int j = 0;j < n;j++){
             nums[j] = temp[j];
