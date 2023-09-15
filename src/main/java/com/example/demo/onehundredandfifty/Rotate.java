@@ -32,7 +32,7 @@ public class Rotate {
      * -231 <= nums[i] <= 231 - 1
      * 0 <= k <= 105
      */
-    //思路：找一个辅助数组 (i+k)%n
+    //思路：额外数组法+找一个辅助数组 (i+k)%n
     public static void rotate(int[] nums, int k) {
         int n = nums.length;
         int[] temp = new int[n];
@@ -49,5 +49,52 @@ public class Rotate {
     public static void main(String[] args) {
         int[] temp = new int[]{1,2,3,4,5,6,7};
         rotate(temp,3);
+    }
+    //思路：环状替换--想不清楚
+    public void rotate1(int[] nums, int k) {
+        int n = nums.length;
+        k = k % n;
+        int count = gcd(k, n);
+        for (int start = 0; start < count; ++start) {
+            int current = start;
+            int prev = nums[start];
+            do {
+                int next = (current + k) % n;
+                int temp = nums[next];
+                nums[next] = prev;
+                prev = temp;
+                current = next;
+            } while (start != current);
+        }
+    }
+
+    public int gcd(int x, int y) {
+        return y > 0 ? gcd(y, x % y) : x;
+    }
+
+    //思路2:数组翻转
+    //操作	结果
+    //原始数组	1~2~3~4~5~6~7
+    //翻转所有元素	7~6~5~4~3~2~1
+    //翻转 [0,k mod n−1][0, k\bmod n - 1][0,kmodn−1] 区间的元素	5~6~7~4~3~2~1
+    //翻转 [k mod n,n−1][k\bmod n, n - 1][kmodn,n−1] 区间的元素	5~6~7~1~2~3~4
+
+    //
+    //
+    public void rotate2(int[] nums, int k){
+        k %= nums.length;
+        reverse(nums,0,nums.length-1);
+        reverse(nums,0,k-1);
+        reverse(nums,k, nums.length-1);
+
+    }
+    private void reverse(int[] nums,int start,int end){
+        while (start<end){
+            int temp = nums[start];
+            nums[start] = nums[end];
+            nums[end] = temp;
+            start++;
+            end--;
+        }
     }
 }
