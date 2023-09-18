@@ -45,11 +45,11 @@ public class QuickSort {
         }
         int pivot = arr[low];
         while (low < high){
-            if (low < high&&pivot<=arr[high]){
+            while (low < high&&pivot<=arr[high]){
                 high--;
             }
             arr[low] = arr[high];
-            if (low < high&&pivot>=arr[low]){
+            while (low < high&&pivot>=arr[low]){
                 low++;
             }
             arr[high] = arr[low];

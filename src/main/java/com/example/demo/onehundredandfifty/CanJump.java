@@ -65,6 +65,5 @@ public class CanJump {
 
         return true;
     }
-    }
 
 }
