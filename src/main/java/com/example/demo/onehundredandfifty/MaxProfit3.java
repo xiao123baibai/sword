@@ -69,4 +69,22 @@ public class MaxProfit3 {
         }
         return profit;
     }
+
+    private int maxProfit3(int[] prices,int fee){
+        int profit = 0;
+        int len = prices.length;
+        if (len < 2){
+            return 0;
+        }
+        int buy = prices[0] + fee;//初始化买入点（不一定买）
+        for (int num : prices){
+            if (num + fee < buy){
+                buy = num + fee;//不断更新买入点
+            }else if (num > buy){
+                profit += num - buy;//计算获利
+                buy = num;//更新买入点与buy = num + fee是联动的
+            }
+        }
+        return profit;
+    }
 }
