@@ -67,4 +67,28 @@ public class maxProfit2 {
         }
         return profit;
     }
+
+    //思路1:贪心算法
+    public int maxProfit11(int[] prices){
+        int profit = 0;
+        for (int i = 1; i < prices.length;i++){
+            profit += (prices[i] - prices[i-1])>0 ? prices[i] - prices[i-1] : 0;
+        }
+        return profit;
+    }
+    //思路2:公式解法
+    public int maxProfit12(int[] prices){
+        int len = prices.length;
+        if (len < 2){
+            return 0;
+        }
+        int[][] dp = new int[len][2];
+        dp[0][0] = 0;//获利
+        dp[0][1] = -prices[0]; //持有股票对应的现金
+        for (int i = 1;i < len;i++){
+            dp[i][0] = Math.max(dp[i-1][0],dp[i-1][1]+prices[i]);
+            dp[i][1] = Math.max(dp[i-1][1],dp[i-1][0]-prices[i]);
+        }
+        return dp[len-1][0];
+    }
 }
