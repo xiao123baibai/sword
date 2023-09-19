@@ -45,4 +45,23 @@ public class MaxProfit4 {
         }
         return Math.max(dp[len-1][1],dp[len-1][2]);
     }
+
+    public int maxProfit1(int[] prices){
+        int len = prices.length;
+        if (len < 2){
+            return 0;
+        }
+        int[][] f = new int[len][3];
+        //f[i][0] 手上持有股票的最大收益
+        //f[i][1] 手上不持有股票，且处于冷静期的累计最大收益
+        //f[i][2] 手上不持有股票，且不处于冷静期的累计最大收益
+        f[0][0] = -prices[0];
+        for (int i = 1; i < len;i++){
+            f[i][0] = Math.max(f[i-1][0],f[i-1][2]-prices[i]);
+            f[i][1] = f[i-1][0] + prices[i];
+            f[i][2] = Math.max(f[i-1][1],f[i-1][2]);
+        }
+        return Math.max(f[len-1][1],f[len-1][2]);
+    }
+
 }
