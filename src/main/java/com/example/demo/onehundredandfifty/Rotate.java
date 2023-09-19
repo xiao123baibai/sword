@@ -97,4 +97,32 @@ public class Rotate {
             end--;
         }
     }
+
+    //环形数组
+    //思路1:取模交换位置
+    public void rotate11(int[] nums, int k){
+        int[] temp = new int[nums.length];
+        for (int i = 0;i < nums.length;i++){
+            int position = (i+k)% nums.length;
+            temp[position] = nums[i];
+        }
+        for (int i = 0;i < nums.length;i++){
+            nums[i] = temp[i];
+        }
+    }
+    //思路2:翻转数组
+    public void rotate12(int[] nums, int k){
+        reverse1(nums,0, nums.length);
+        reverse1(nums,0,k-1);
+        reverse1(nums,k,nums.length);
+    }
+    private void reverse1(int[] nums, int start,int end){
+        while (start < end){
+            int temp = nums[start];
+            nums[start] = nums[end];
+            nums[end] = temp;
+            start++;
+            end--;
+        }
+    }
 }
