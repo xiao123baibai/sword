@@ -103,4 +103,22 @@ public class MaxProfit3 {
         }
         return dp[len-1][0];
     }
+    //思路：贪心算法
+    public int maxProfitFee1(int[] prices, int fee){
+        int len = prices.length;
+        if (len < 2){
+            return 0;
+        }
+        int profit = 0;
+        int buy = prices[0]+fee;
+        for (int i = 1;i<len;i++){
+            if (prices[i] > buy){
+                profit += prices[i] - buy;
+                buy = prices[i];
+            }else if (prices[i] + fee< buy){
+                buy = prices[i] + fee;
+            }
+        }
+        return profit;
+    }
 }
