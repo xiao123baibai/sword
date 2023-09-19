@@ -41,4 +41,21 @@ public class MajorityElement {
         }
         return count > nums.length/2 ? x:0;
     }
+
+    //多数问题--摩尔算法
+    public int majorityElement1(int[] nums){
+        int count = 0,votes = 0,x = 0;
+        for (int num : nums){
+            if(votes == 0){
+                x = num;
+            }
+            votes += num == x ? 1:-1;
+        }
+        for (int figure:nums){
+            if (x == figure){
+                count++;
+            }
+        }
+        return count > nums.length/2 ? x : 0;
+    }
 }
