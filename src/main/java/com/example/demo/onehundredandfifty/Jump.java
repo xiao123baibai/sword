@@ -63,4 +63,34 @@ public class Jump {
         }
         return steps;
     }
+
+    //贪心算法 --正向寻找最大距离
+    public int jump2(int[] nums) {
+        int furthest =0;
+        int end = 0;
+        int count = 0;
+        for (int i = 0; i < nums.length-1;i++){
+            furthest = Math.max(furthest,i+nums[i]);
+            if (end == i){
+                end = furthest;
+                count++;
+            }
+        }
+        return count;
+    }
+    //贪心算法：反向寻找步数
+    public int jump3(int[] nums){
+        int position = nums.length-1;
+        int step = 0;
+        while (position > 0){
+            for (int i = 0; i < position; i++){
+                if (i+nums[i] > position){
+                    position = i;
+                    step++;
+                    break;
+                }
+            }
+        }
+        return step;
+    }
 }
