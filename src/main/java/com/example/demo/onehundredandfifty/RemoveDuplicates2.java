@@ -90,4 +90,19 @@ public class RemoveDuplicates2 {
         }
         return n;
     }
+
+    public int removeDuplicates3(int[] nums){
+        return process1(nums,2);
+    }
+    private int process1(int[] nums,int k){
+        int n = 0;
+        for (int i : nums){
+            if (n < k || nums[n - k] != i){
+                nums[n++] = i;
+            }
+        }
+        return n;
+    }
+
+
 }

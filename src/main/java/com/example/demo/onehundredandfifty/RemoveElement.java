@@ -1,7 +1,6 @@
 package com.example.demo.onehundredandfifty;
 
 import java.util.Arrays;
-import java.util.Collections;
 
 /**
  * 移除元素
@@ -47,7 +46,8 @@ public class RemoveElement {
      */
 
     //思路：数组反转一点都不好用
-    public static int removeElement(Integer[] nums, int val) {
+    //下面方法没用
+    public int removeElement(Integer[] nums, int val) {
         int temp = -1;
         int count = 0;
         for (int i =0;i < nums.length;i++){
@@ -57,8 +57,20 @@ public class RemoveElement {
             }
         }
         Arrays.sort(nums);
-        Collections.reverse(Arrays.asList(nums));
+        reverse(nums);//不起作用，可以考虑手动写一个翻转
         return count;
+    }
+
+    private void reverse(Integer[] nums){
+        int start = 0;
+        int end = nums.length-1;
+        while (start < end){
+            int temp = nums[start];
+            nums[start] = nums[end];
+            nums[end] = temp;
+            start++;
+            end--;
+        }
     }
     //双指针用法
     public static int removeElement1(Integer[] nums, int val){
@@ -67,6 +79,20 @@ public class RemoveElement {
         while (left<right){
             if (nums[left] == val){
                 nums[left] = nums[right-1];
+                right--;
+            }else {
+                left++;
+            }
+        }
+        return left;
+    }
+
+    public int removeElement2(Integer[] nums, int val){
+        int left = 0;
+        int right = nums.length - 1;
+        while (left < right){
+            if (nums[left] == val){
+                nums[left] = nums[right];
                 right--;
             }else {
                 left++;

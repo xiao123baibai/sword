@@ -67,12 +67,12 @@ public class RemoveDuplicates {
         }
         int pivot = arr[low];
         while (low < high){
-            if (low < high&&pivot<=arr[high]){
+            while(low < high&&pivot<=arr[high]){//变化的是high
                 high--;
             }
             arr[low] = arr[high];
-            if (low < high&&pivot>=arr[low]){
-                low--;
+            while (low < high&&pivot>=arr[low]){//变化的是low
+                low++;
             }
             arr[high] = arr[low];
         }
@@ -95,5 +95,72 @@ public class RemoveDuplicates {
             fast++;
         }
         return slow;
+    }
+    //方法一：因为是升序，索引可以使用交互位置，然后排序，重新复现一下当时的想法
+    public int removeDuplicates11(int[] nums){
+        int left = 0;
+        int right = nums.length - 1;
+        Map<Integer,Integer> map = new HashMap<>();
+        while (left <= right){
+            if (!map.containsKey(nums[left])){
+                map.put(nums[left],0);
+                left++;
+            }else {
+                nums[left] = nums[right];
+                right--;
+            }
+        }
+        quickSort(nums,0,left-1);
+        return left;
+    }
+    public int[] quickSort(int[] nums,int left,int right){
+        int low = left;
+        int high = right;
+        if (low >= high){
+            return new int[0];
+        }
+        int pivot = nums[low];
+        while (low < high){
+            while (low < high && pivot <= nums[high]){
+                high--;
+            }
+            nums[low] = nums[high];
+            while (low < high && pivot >= nums[low]){
+                low++;
+            }
+            nums[high] = nums[low];
+        }
+        nums[low] = pivot;
+        quickSort(nums,left,low-1);
+        quickSort(nums,low+1,right);
+        return nums;
+    }
+    //方法二：双指针优化
+    public int removeDuplicates12(int[] nums){
+        if (nums.length<2){
+            return nums.length;
+        }
+        int fast = 1,slow = 1;
+        while (fast < nums.length){
+            if (nums[fast] != nums[fast -1]){
+                nums[slow] = nums[fast];
+                slow++;
+            }
+            fast++;
+        }
+        return slow;
+    }
+    //方法三：通用方法处理
+    public int removeDuplicates13(int[] nums){
+       return process(nums,1);
+    }
+    private int process(int[] nums,int k){
+        int n = 0;
+        for (int num : nums){
+            if (n < k || nums[n-k] != num){
+                nums[n++] = num;
+            }
+        }
+        return n;
     }
 }
