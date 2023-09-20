@@ -36,12 +36,17 @@ public class MaxProfit6 {
      * 0 <= prices[i] <= 1000
      */
     public int maxProfit(int k, int[] prices) {
+        //buy[i]表示买入i次股票后的利润
        int[] buy = new int[k+1];
+        //sell[i]表示完成i笔交易后的利润
        int[] sell = new int[k+1];
        Arrays.fill(buy,-prices[0]);
        for (int i = 1;i < prices.length;i++){
+           //最多支持k次交易
            for (int j = 1; j <= k;j++){
-               buy[j] = Math.max(buy[j],sell[i-1]-prices[i]);
+               //买入j次后的最大利润为:Math.max(当前利润,上一笔交易的利润-当天的股票价格)
+               buy[j] = Math.max(buy[j],sell[j-1]-prices[i]);
+               //完成j次交易后的最大利润为：Math.max(当前利润，当前利润+本次交易后所得的利润)
                sell[j] = Math.max(sell[j],buy[j]+prices[i]);
            }
        }

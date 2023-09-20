@@ -1,7 +1,7 @@
 package com.example.demo.onehundredandfifty;
 
 /**
- * 买卖股票的最佳时机 III
+ * 买卖股票的最佳时机 III k 次交易
  */
 public class MaxProfit5 {
     /**
