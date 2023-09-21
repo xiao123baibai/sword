@@ -81,7 +81,7 @@ public class RomanToInt {
             if (i < len - 1 && value < symbolMap.get(s.charAt(i+1))){
                 ans -= value;
             }else {
-                ans =+ value;
+                ans += value;
             }
         }
         return ans;
