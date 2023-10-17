@@ -35,7 +35,7 @@ public class IsSubsequence {
      * 0 <= t.length <= 10^4
      * 两个字符串都只由小写字符组成。
      */
-    //思路：双指针循环
+    //思路：双指针循环  这种双指针太绕了
     public static boolean isSubsequence(String s, String t) {
         if (t.length() == 1){
             return s.equals(t);
@@ -61,5 +61,18 @@ public class IsSubsequence {
 
     public static void main(String[] args) {
         isSubsequence("bb","ahbgdc");
+    }
+
+    //思路：双指针循环简化
+    public boolean isSubsequence1(String s, String t){
+        int m = s.length(),n = t.length();
+        int i = 0,j = 0;
+        while (i < m && j < n){
+            if (s.charAt(i) == t.charAt(j)){
+                i++;
+            }
+            j++;
+        }
+        return i == m;
     }
 }
