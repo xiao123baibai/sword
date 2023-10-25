@@ -45,7 +45,7 @@ public class LengthOfLongestSubstring {
         int res = 0;
         while (right < n){
             if (map.containsKey(s.charAt(right))){
-                left = Math.max(left,map.get(s.charAt(right)));//很重要
+                left = Math.max(left,map.get(s.charAt(right)));//很重要，因为重复的字段可能有很多，但是要找最后位置重复的坐标
             }
             res = Math.max(res,right-left);
             map.put(s.charAt(right),right);
@@ -55,7 +55,7 @@ public class LengthOfLongestSubstring {
     }
 
     public static void main(String[] args) {
-        String s = "bbbbb";
+        String s = "abba";
         lengthOfLongestSubstring(s);
     }
 }
