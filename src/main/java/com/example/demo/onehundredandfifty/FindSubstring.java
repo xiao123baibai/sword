@@ -1,5 +1,7 @@
 package com.example.demo.onehundredandfifty;
 
+import org.springframework.boot.autoconfigure.integration.IntegrationAutoConfiguration;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -52,6 +54,38 @@ public class FindSubstring {
      * 1 <= words[i].length <= 30
      * words[i] 和 s 由小写英文字母组成
      */
+
+    public List<Integer> findSubString(String s,String[] words){
+        int wordLength = words[0].length();
+        int wordNum = words.length;
+        int len = s.length();
+        List<Integer> res = new ArrayList<>();
+        Map<String, Integer> countMap = new HashMap<>();
+        for (String word : words){
+            countMap.put(word,countMap.getOrDefault(word,0)+1);
+        }
+        //找到循环的范围，总共有两种情况，1:单词在里面， 2:单词不在里面
+        Map<String,Integer> windowMap = new HashMap<>();
+        for (int wordStart = 0; wordStart < wordLength;wordStart++){
+            int wordLeft = wordStart;
+            int wordRight = wordStart;
+            while (wordRight + wordLength <= len){
+                String word = s.substring(wordRight,wordRight+wordLength);
+                windowMap.put(word,windowMap.getOrDefault(word,0)+1);
+                wordRight += wordLength;
+                while (windowMap.getOrDefault(word,0) > countMap.getOrDefault(word,0)){
+                    String leftWord = s.substring(wordLeft,wordLeft + wordLength);
+                    windowMap.put(leftWord,windowMap.getOrDefault(leftWord,0)-1);
+                    wordLeft += wordLength;
+                }
+                int wordNumber = (wordRight - wordLeft)/wordLength;
+                if (wordNumber == wordNum){
+                    res.add(wordLeft);
+                }
+            }
+        }
+        return res;
+    }
     public static List<Integer> findSubstring(String s, String[] words) {
         int wordLength = words[0].length();
         int wordNum =words.length;
