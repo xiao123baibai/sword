@@ -44,7 +44,7 @@ public class MinWindow {
      * s 和 t 由英文字母组成
      */
 
-    public String minWindow(String s, String t) {
+    public static String minWindow(String s, String t) {
         String res = "";
         if (s == null || s == "" || t == null || t == "" || t.length() > s.length()){
             return res;
@@ -57,7 +57,7 @@ public class MinWindow {
         int right = 0;
         int start = 0;
         int count = 0;
-        int min = sLength + 1;
+        int min = Integer.MAX_VALUE;
         for (int i = 0; i < tLength; i++){
             Character c = t.charAt(i);
             countMap.put(c,countMap.getOrDefault(c,0)+1);
@@ -84,21 +84,24 @@ public class MinWindow {
                     left++;
                     continue;
                 }
-                if (indexMap.getOrDefault(l,0)  == countMap.getOrDefault(l,0)){
+                //太妙了
+                if (indexMap.getOrDefault(l,0).equals(countMap.getOrDefault(l,0))){
                     count--;
                 }
                 indexMap.put(l,indexMap.getOrDefault(l,0)-1);
                 left++;
             }
         }
-        if (min == sLength+1){
+        if (min == Integer.MAX_VALUE){
             return res;
         }
         return s.substring(start,start+min);
     }
 
     public static void main(String[] args) {
-
+        String s = "a";
+        String t = "b";
+        minWindow(s,t);
     }
 
     public String minWindow1(String s, String t){
