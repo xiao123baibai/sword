@@ -3,8 +3,6 @@ package com.example.demo.onehundredandfifty;
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.bouncycastle.asn1.x500.style.RFC4519Style.c;
-
 /**
  * 有效的数独
  */
