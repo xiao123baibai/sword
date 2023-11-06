@@ -93,7 +93,6 @@ public class IsValidSudoku {
         while (r <= rLen -3){
             int c = 0;
             while (c <= cLen-3){
-
                 for (int i = r; i < r+3;i++){
                     for (int j = c;j < c+3;j++){
                         System.out.print(board[i][j] + " ");
