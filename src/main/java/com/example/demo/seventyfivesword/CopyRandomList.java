@@ -58,7 +58,7 @@ public class CopyRandomList {
         while (curr != null){
             map.get(curr).next = map.get(curr.next);
             map.get(curr).random = map.get(curr.random);
-            curr = head.next;
+            curr = curr.next;
         }
         return map.get(head);
     }
