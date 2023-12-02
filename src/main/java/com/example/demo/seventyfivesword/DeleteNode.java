@@ -48,6 +48,24 @@ public class DeleteNode {
         return head;
     }
 
+    public ListNode deleteNode1(ListNode head, int val){
+        if (head == null){
+            return head;
+        }
+        if (head.val == val){
+            return head.next;
+        }
+        ListNode res = head;
+        ListNode curr = head.next;
+        while (curr != null){
+            if (curr.val == val);
+            res.next = curr.next;
+            res = curr;
+            curr = curr.next;
+        }
+        return head;
+    }
+
     public static void main(String[] args) {
         ListNode n1 = new ListNode(-1);
         ListNode n2 = new ListNode(2);
