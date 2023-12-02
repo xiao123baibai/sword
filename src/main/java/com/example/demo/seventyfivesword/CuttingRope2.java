@@ -24,7 +24,7 @@ public class CuttingRope2 {
      * 输出: 36
      * 解释: 10 = 3 + 3 + 4, 3 × 3 × 4 = 36
      */
-
+    //思路：3 是最大的，因此只要算3的倍数和余数即可
     public int cuttingRope(int n) {
         if(n <= 3){
             return n-1;
