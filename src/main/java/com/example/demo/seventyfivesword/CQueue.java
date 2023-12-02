@@ -26,10 +26,6 @@ public class CQueue {
     private Stack<Integer> stackIn;
     private Stack<Integer> stackOut;
 
-    public CQueue() {
-        this.stackIn = new Stack<>();
-        this.stackOut = new Stack<>();
-    }
     public void appendTail(Integer in){
         stackIn.push(in);
     }
@@ -40,6 +36,24 @@ public class CQueue {
         }
         while (!stackIn.isEmpty()){
              stackOut.push(stackIn.pop());
+        }
+        return stackOut.isEmpty() ? -1:stackOut.pop();
+    }
+
+    public CQueue() {
+        this.stackIn = new Stack<>();
+        this.stackOut = new Stack<>();
+    }
+    public void appendTail1(Integer in){
+        stackIn.push(in);
+    }
+
+    public Integer deleteHead1(){
+        if (!stackOut.isEmpty()){
+            return stackOut.pop();
+        }
+        while (!stackIn.isEmpty()){
+            stackOut.push(stackIn.pop());
         }
         return stackOut.isEmpty() ? -1:stackOut.pop();
     }
