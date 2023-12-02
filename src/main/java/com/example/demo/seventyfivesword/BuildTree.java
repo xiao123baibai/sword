@@ -25,6 +25,9 @@ public class BuildTree {
      * Input: preorder = [-1], inorder = [-1]
      * Output: [-1]
      */
+    public TreeNode buildTree2(int[] preorder, int[] inorder){
+
+    }
     //战歌走起：前后定根，中分左右
     public TreeNode buildTree1(int[] preorder, int[] inorder) {
         if (preorder == null || preorder.length == 0){
@@ -70,6 +73,29 @@ public class BuildTree {
         int i = map.get(preorder[root]);
         node.left = recur(root+1,left,i-1);
         node.right = recur(root + i + 1 - left,i+1,right);
+        return node;
+    }
+
+    int[] preOrder;
+    Map<Integer,Integer> inMap = new HashMap<>();
+    public TreeNode deduceTree(int[] preorder, int[] inorder){
+        this.preOrder = preorder;
+        for (int i = 0; i < inorder.length;i++){
+            //i 为坐标，用于递归时候的位置查找
+            inMap.put(inorder[i],i);
+        }
+        return recur(0,0,inorder.length-1);
+    }
+    private TreeNode recur1(int rootIndex,int leftIndex,int rightIndex){
+        if (leftIndex > rightIndex){
+            return null;
+        }
+        //通过前序确定根结点
+        TreeNode node = new TreeNode(preOrder[rootIndex]);
+        int i = inMap.get(node.val);
+        //i代表的是根结点在inorder中的值
+        node.left = recur(rootIndex+1,leftIndex,i-1);
+        node.right = recur(rootIndex + i-leftIndex+1,i+1,rightIndex);
         return node;
     }
 }
