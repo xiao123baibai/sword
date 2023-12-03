@@ -63,7 +63,24 @@ public class CopyRandomList {
         return map.get(head);
     }
     // Definition for a Node.
-
+    public Node copyRandomList1(Node head){
+        if (head == null){
+            return head;
+        }
+        Node curr = head;
+        Map<Node,Node> map = new HashMap<>();
+        while (curr != null){
+            map.put(curr,new Node(curr.val));
+            curr = curr.next;
+        }
+        curr = head;
+        while (curr != null){
+            map.get(curr).next = map.get(curr.next);
+            map.get(curr).random = map.get(curr.random);
+            curr = curr.next;
+        }
+        return map.get(head);
+    }
 
     public static void main(String[] args) {
         Node n1 = new Node(1);
