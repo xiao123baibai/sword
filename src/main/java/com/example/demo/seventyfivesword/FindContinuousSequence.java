@@ -50,7 +50,7 @@ public class FindContinuousSequence {
     public int[][] findContinuousSequence1(int target){
         List<int[]> res = new ArrayList<>();
         int l = 1,r = 2,sum = 3;
-        while (l <r){
+        while (l <r){//这里的条件很重要
             if (sum < target){
                 r++;//因为要加，所以提前++
                 sum += r;
@@ -61,6 +61,29 @@ public class FindContinuousSequence {
                 int[] sub = new int[r-l+1];
                 for (int k= l; k<=r;k++){
                     sub[k-l]=k;
+                }
+                res.add(sub);
+                sum -= l;//这一步很重要，保持窗口的持续滑动
+                l++;
+            }
+        }
+        return res.toArray(new int[res.size()][]);
+    }
+
+    public int[][] findContinuousSequence2(int target){
+        List<int[]> res = new ArrayList<>();
+        int l = 1,r = 2,sum = 3;
+        while (l<r){
+            if (sum < target){
+                r++;
+                sum += r;
+            } else if (sum > target) {
+                sum -= l;
+                l++;
+            }else {
+                int[] sub = new int[r-l+1];
+                for (int i = l; i <= r;i++){
+                    sub[i-l] = i;
                 }
                 res.add(sub);
                 sum -= l;
