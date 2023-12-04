@@ -1,7 +1,7 @@
 package com.example.demo.seventyfivesword;
 
 /**
- * 矩阵中的路径
+ * 矩阵中的路径--较为复杂，可以作为练习，但是估计面试的时候不考
  */
 public class Exist {
     /**

@@ -35,4 +35,16 @@ public class Fib {
         }
         return res;
     }
+
+    public int fib1(int n){
+        int res = 0;
+        int l = 0;
+        int r = 1;
+        for (int i = 0; i < n;i++){
+            l = r;
+            r = res;
+            res = (l+r)%1000000007;
+        }
+        return res;
+    }
 }
