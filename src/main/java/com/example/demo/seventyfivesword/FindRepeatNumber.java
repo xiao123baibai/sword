@@ -1,6 +1,8 @@
 package com.example.demo.seventyfivesword;
 
+import javax.print.attribute.standard.NumberUpSupported;
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 数组中重复的数字
@@ -19,6 +21,17 @@ public class FindRepeatNumber {
      * [2, 3, 1, 0, 2, 5, 3]
      * 输出：2 或 3
      */
+    public int findRepeatNumber1(int[] nums){
+        Map<Integer,Integer> map = new HashMap<>();
+        for (int i = 0; i < nums.length; i++){
+            if (map.containsKey(nums[i])){
+                return nums[i];
+            }else {
+                map.put(nums[i],i);
+            }
+        }
+        return -1;
+    }
     public int findRepeatNumber(int[] nums){
         HashMap<Integer,Integer> map = new HashMap<>();
         for (int i = 0; i < nums.length;i++){
