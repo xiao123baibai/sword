@@ -38,7 +38,16 @@ public class Exchange {
         return nums;
     }
 
-    public static void main(String[] args) {
-
+    public int[] exchange1(int[] nums){
+        int k = nums.length - 1;
+        for (int i = 0; i < nums.length;i++){
+            while (nums[i]%2 == 1 && i <= k){
+                int temp = nums[k];
+                nums[k] = nums[i];
+                nums[i] = temp;
+                k--;
+            }
+        }
+        return nums;
     }
 }

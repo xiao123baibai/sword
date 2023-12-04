@@ -58,8 +58,10 @@ public class DeleteNode {
         ListNode res = head;
         ListNode curr = head.next;
         while (curr != null){
-            if (curr.val == val);
-            res.next = curr.next;
+            if (curr.val == val){
+                res.next = curr.next;
+                break;
+            }
             res = curr;
             curr = curr.next;
         }
