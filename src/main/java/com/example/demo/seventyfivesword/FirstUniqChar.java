@@ -1,6 +1,7 @@
 package com.example.demo.seventyfivesword;
 
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * 第一个只出现一次的字符
@@ -29,6 +30,24 @@ public class FirstUniqChar {
             }
         }
         for (int i = 0; i < s.length(); i++){
+            if (map.get(s.charAt(i)) == 1){
+                return s.charAt(i);
+            }
+        }
+        return ' ';
+    }
+
+    public char firstUniqChar1(String s){
+        Map<Character,Integer> map = new HashMap<>();
+        for (int i = 0;i < s.length();i++){
+            Character c = s.charAt(i);
+            if (map.containsKey(c)){
+                map.put(c,-1);
+            }else {
+                map.put(c,1);
+            }
+        }
+        for (int i = 0;i < s.length();i++){
             if (map.get(s.charAt(i)) == 1){
                 return s.charAt(i);
             }
