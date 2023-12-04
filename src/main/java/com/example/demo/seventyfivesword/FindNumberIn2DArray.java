@@ -21,6 +21,22 @@ public class FindNumberIn2DArray {
      *   [18, 21, 23, 26, 30]
      * ]
      */
+    public boolean findNumberIn2DArray1(int[][] matrix, int target){
+        int n = 0;
+        int m = matrix.length - 1;
+        boolean flag = false;
+        while (n < matrix[0].length && m >=0){
+            if (matrix[m][n] == target){
+                flag = true;
+                break;
+            } else if (matrix[m][n] > target) {
+                m--;
+            } else if (matrix[m][n] < target) {
+                n++;
+            }
+        }
+        return flag;
+    }
 
     public boolean findNumberIn2DArray(int[][] matrix, int target){
         int n = 0;
