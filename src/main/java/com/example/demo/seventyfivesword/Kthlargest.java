@@ -1,5 +1,8 @@
 package com.example.demo.seventyfivesword;
 
+/**
+ * 寻找二叉搜索数中的目标节点
+ */
 public class Kthlargest {
     /**
      * 给定一棵二叉搜索树，请找出其中第 k 大的节点的值。
@@ -32,6 +35,7 @@ public class Kthlargest {
      *
      * 1 ≤ k ≤ 二叉搜索树元素个数
      */
+    //思路转换： 二叉树的第cnt大元素，可以转换成中序排序后倒序的第cnt节点
 //      Definition for a binary tree node.
     static class TreeNode {
         int val;
@@ -104,6 +108,15 @@ public class Kthlargest {
         System.out.print(root.val+" ");
         preOrder(root.left);
         preOrder(root.right);
+    }
+
+    private static void preOrder1(TreeNode root){
+        if(root == null){
+            return;
+        }
+        System.out.println(root.val+" ");
+        preOrder1(root.left);
+        preOrder1(root.right);
     }
     //中序
     private static void inOrder(TreeNode root){
