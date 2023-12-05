@@ -1,7 +1,7 @@
 package com.example.demo.seventyfivesword;
 
 /**
- * 圆圈中最后剩下的数字
+ * 圆圈中最后剩下的数字--不知道题是啥了，没找到
  */
 public class LastRemaining {
     /**
