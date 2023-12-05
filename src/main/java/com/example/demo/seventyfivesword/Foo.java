@@ -1,5 +1,6 @@
 package com.example.demo.seventyfivesword;
 
+import java.util.concurrent.Semaphore;
 import java.util.concurrent.atomic.AtomicInteger;
 
 /**
@@ -52,14 +53,14 @@ public class Foo {
 
     }
 
-    public void first(Runnable printFirst) throws InterruptedException {
+    public void first1(Runnable printFirst) throws InterruptedException {
 
         // printFirst.run() outputs "first". Do not change or remove this line.
         printFirst.run();
         secondJob.incrementAndGet();
     }
 
-    public void second(Runnable printSecond) throws InterruptedException {
+    public void second1(Runnable printSecond) throws InterruptedException {
         while (secondJob.get() != 1){
 
         }
@@ -68,15 +69,32 @@ public class Foo {
         thirdJob.incrementAndGet();
     }
 
-    public void third(Runnable printThird) throws InterruptedException {
-        while (thirdJob.get() != 1){
-
-        }
+    public void third1(Runnable printThird) throws InterruptedException {
         // printThird.run() outputs "third". Do not change or remove this line.
         printThird.run();
     }
 
     //第二种信号量
+    private Semaphore sSecond = new Semaphore(0);
+    private Semaphore sThird = new Semaphore(0);
+    public void first(Runnable printFirst) throws InterruptedException {
 
+        // printFirst.run() outputs "first". Do not change or remove this line.
+        printFirst.run();
+        sSecond.release();
+    }
+
+    public void second(Runnable printSecond) throws InterruptedException {
+        sSecond.acquire();
+        // printSecond.run() outputs "second". Do not change or remove this line.
+        printSecond.run();
+        sThird.release();
+    }
+
+    public void third(Runnable printThird) throws InterruptedException {
+        sThird.acquire();
+        // printThird.run() outputs "third". Do not change or remove this line.
+        printThird.run();
+    }
     //第三种countdownlatch
 }
