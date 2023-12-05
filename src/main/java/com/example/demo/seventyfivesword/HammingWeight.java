@@ -1,7 +1,7 @@
 package com.example.demo.seventyfivesword;
 
 /**
- * 二进制中1的个数
+ * 二进制中1的个数--不擅长位运算
  */
 public class HammingWeight {
     /**
