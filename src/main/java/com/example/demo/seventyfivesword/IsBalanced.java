@@ -49,6 +49,18 @@ public class IsBalanced {
         }
         return Math.max(depth1(root.left), depth1(root.right)) + 1;
     }
+    public boolean isBalanced11(TreeNode root){
+        if (root == null){
+            return true;
+        }
+        return Math.abs(depth11(root.left)-depth11(root.right)) <= 1 && isBalanced11(root.left) && isBalanced11(root.right);
+    }
+    private int depth11(TreeNode root){
+        if (root == null){
+            return 0;
+        }
+        return Math.max(depth11(root.left),depth11(root.right)) + 1;
+    }
 
     //后续遍历 + 剪枝
     public boolean isBalanced(TreeNode root){
@@ -61,6 +73,21 @@ public class IsBalanced {
         }
         int leftHeight = height(root.left);
         int rightHeight = height(root.right);
+        if (leftHeight == -1 || rightHeight == -1 || Math.abs(leftHeight-rightHeight) > 1){
+            return -1;
+        }else {
+            return Math.max(leftHeight,rightHeight) + 1;
+        }
+    }
+    public boolean isBalanced2(TreeNode root){
+        return height1(root) > 0;
+    }
+    private int height1(TreeNode root){
+        if (root == null){
+            return 0;
+        }
+        int leftHeight = height1(root.left);
+        int rightHeight = height1(root.right);
         if (leftHeight == -1 || rightHeight == -1 || Math.abs(leftHeight-rightHeight) > 1){
             return -1;
         }else {
