@@ -172,4 +172,25 @@ public class IsSubStructure {
         }
         return help(A,B) || isSubStructure(A.left,B) || isSubStructure(A.right,B);
     }
+
+    public boolean isSubStructure3(TreeNode A,TreeNode B){
+        if (A == null || B == null){
+            return false;
+        }
+        return help1(A,B) || isSubStructure3(A.left,B) || isSubStructure3(A.right,B);
+    }
+
+    private boolean help1(TreeNode A1,TreeNode B1){
+        if (B1 == null){
+            return true;
+        }
+        if (A1 == null){
+            return false;
+        }
+        if (A1.val == B1.val && help1(A1.left,B1.left) && help1(A1.right,B1.right)){
+            return true;
+        }else {
+            return false;
+        }
+    }
 }
