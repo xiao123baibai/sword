@@ -59,4 +59,23 @@ public class LowestCommonAncestor2 {
         }
         return root;//否则，左右都不为空，说明p，q分别在root异侧，最近公共祖先为root
     }
+
+    //希望做这题
+    public TreeNode lowestCommonAncestor2(TreeNode root, TreeNode p, TreeNode q){
+        if (root == null){
+            return null;
+        }
+        if (root == p || root ==q){
+            return root;
+        }
+        TreeNode left = lowestCommonAncestor2(root.left,p,q);
+        TreeNode right = lowestCommonAncestor2(root.right,p,q);
+        if (left == null){
+            return right;
+        }
+        if (right == null){
+            return left;
+        }
+        return root;
+    }
 }
