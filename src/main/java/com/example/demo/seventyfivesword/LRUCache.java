@@ -5,7 +5,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 /**
- *  LRU (最近最少使用) 缓存
+ * 146- LRU (最近最少使用) 缓存
  */
 public class LRUCache extends LinkedHashMap<Integer,Integer> {
     /**
@@ -92,10 +92,10 @@ public class LRUCache extends LinkedHashMap<Integer,Integer> {
 
     //头部添加
     private void addHead(DLinkedNode node){
-        node.prev = head;
-        head.next = node;
-        head.next.prev = node;
         node.next = head.next;
+        node.prev = head;
+        head.next.prev = node;
+        head.next = node;
     }
 
     //移除节点
