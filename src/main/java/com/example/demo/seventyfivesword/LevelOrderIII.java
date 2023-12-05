@@ -6,7 +6,7 @@ import java.util.List;
 import java.util.Queue;
 
 /**
- * 从上到下打印二叉树 III
+ * 从上到下打印二叉树 III--修正原来写的内容
  */
 public class LevelOrderIII {
     /**
@@ -39,9 +39,10 @@ public class LevelOrderIII {
         }
         int l = 0;
         while (!queue.isEmpty()){
+            int n = queue.size();
             LinkedList<Integer> temp = new LinkedList<>();
             //每一层循环的时候都是要先划定每次的范围，所以要递减
-            for (int i = queue.size();i > 0; i--){
+            for (int i = n;i > 0; i--){
                 TreeNode treeNode = queue.poll();
                 if (l%2 == 0){
                     temp.addLast(treeNode.val);
