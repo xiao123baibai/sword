@@ -27,6 +27,19 @@ public class GetIntersectionNode {
         return tempB;
     }
 
+    ListNode getIntersectionNode11(ListNode headA, ListNode headB){
+        if (headA == null || headB == null){
+            return null;
+        }
+        ListNode tempA = headA;
+        ListNode tempB = headB;
+        while (tempA != tempB){
+            tempA = (tempA == null ? headB:tempA.next);
+            tempB = (tempB == null ? headA:tempB.next);
+        }
+        return tempB;
+    }
+
     //遍历
     ListNode getIntersectionNode2(ListNode headA, ListNode headB) {
         Set<ListNode> nodeSet = new HashSet<>();
@@ -43,4 +56,18 @@ public class GetIntersectionNode {
         return null;
     }
 
+    ListNode getIntersectionNode22(ListNode headA, ListNode headB){
+        Set<ListNode> nodeSet = new HashSet<>();
+        while (headA != null){
+            nodeSet.add(headA);
+            headA = headA.next;
+        }
+        while (headB != null){
+            if (nodeSet.contains(headB)){
+                return headB;
+            }
+            headB = headB.next;
+        }
+        return null;
+    }
 }
