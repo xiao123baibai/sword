@@ -1,10 +1,9 @@
 package com.example.demo.seventyfivesword;
 
 import java.util.LinkedList;
-import java.util.List;
 
 /**
- * 获取链表的倒数第k节点
+ * 获取链表的倒数第k节点--删除倒数第k节点
  */
 public class GetKthFromEnd {
     /**
@@ -80,5 +79,51 @@ public class GetKthFromEnd {
             secondNode = secondNode.next;
         }
         return secondNode;
+    }
+
+    //辅助栈法
+    private ListNode getKthFromEnd11(ListNode head,int k){
+        LinkedList<ListNode> stack = new LinkedList<>();
+        ListNode curr = head;
+        while (curr != null){
+            stack.add(curr);
+            curr = curr.next;
+        }
+        if (stack.size() > k){
+            return stack.get(stack.size() - k);
+        }else {
+            return null;
+        }
+    }
+    //遍历
+    private ListNode getKthFromEnd22(ListNode head,int k){
+        ListNode res = null;
+        ListNode curr = head;
+        int n = 0;
+        while (curr != null){
+            n++;
+            curr = curr.next;
+        }
+        if (n > k){
+            for (int i = 0; i < n - k; i++){
+                res = head;
+                head = head.next;
+            }
+        }
+        return res;
+    }
+    //双指针法
+    private ListNode getKthFromEnd33(ListNode head,int k){
+        ListNode first = head;
+        ListNode second = head;
+        while (k > 0){
+            k--;
+            first = first.next;
+        }
+        while (first != null){
+            first = first.next;
+            second = second.next;
+        }
+        return second;
     }
 }
