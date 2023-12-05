@@ -56,6 +56,32 @@ public class IsStraight {
         return flag;
     }
 
+    public boolean isStraight1(int[] nums){
+        boolean flag = true;
+        int[] arr = sort(nums,0,nums.length-1);
+        int count = 0;
+        for (int i = 0; i < nums.length; i++){
+            if (arr[i] == 0){
+                count++;
+            }
+        }
+        int temp = arr[count];
+        for (int j = count+1; j < nums.length; j++){
+            temp++;
+            if (temp == nums[j]){
+            }else {
+                if (count > 0){
+                    count--;
+                    j--;
+                }else {
+                    flag = false;
+                    break;
+                }
+            }
+        }
+        return flag;
+    }
+
     private static int[] sort(int[] arr, int left, int right) {
         int head = left;
         int tail = right;
