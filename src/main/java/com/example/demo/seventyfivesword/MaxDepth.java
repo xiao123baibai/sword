@@ -4,7 +4,7 @@ import java.util.Deque;
 import java.util.LinkedList;
 
 /**
- * 二叉树的深度
+ * 二叉树的深度--逐层打印的变种
  */
 public class MaxDepth {
     /**
