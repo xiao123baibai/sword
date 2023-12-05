@@ -49,6 +49,7 @@ public class H2O {
         O.release();
     }
 
+    //这里注意是获取释放两个
     public void oxygen(Runnable releaseOxygen) throws InterruptedException {
         O.acquire(2);
         // releaseOxygen.run() outputs "O". Do not change or remove this line.
