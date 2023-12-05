@@ -50,8 +50,10 @@ public class FizzBuzz {
 
     // printFizz.run() outputs "fizz".
     public void fizz(Runnable printFizz) throws InterruptedException {
-        for (int i = 3; i <= n; i += 3){
-            if (i % 5 == 0) continue;
+        for (int i = 3; i <= n;i+=3){
+            if (i % 5 == 0){
+                continue;
+            }
             s3.acquire();
             printFizz.run();
             sNum.release();
@@ -60,8 +62,10 @@ public class FizzBuzz {
 
     // printBuzz.run() outputs "buzz".
     public void buzz(Runnable printBuzz) throws InterruptedException {
-        for (int i = 5; i <= n; i += 5){
-            if (i % 3 == 0) continue;
+        for (int i = 5; i <= n;i+=5){
+            if (i % 3 == 0){
+                continue;
+            }
             s5.acquire();
             printBuzz.run();
             sNum.release();
@@ -70,7 +74,7 @@ public class FizzBuzz {
 
     // printFizzBuzz.run() outputs "fizzbuzz".
     public void fizzbuzz(Runnable printFizzBuzz) throws InterruptedException {
-        for (int i = 15; i <= n; i += 15){
+        for (int i = 15; i <= n; i+=15){
             s35.acquire();
             printFizzBuzz.run();
             sNum.release();
@@ -79,17 +83,17 @@ public class FizzBuzz {
 
     // printNumber.accept(x) outputs "x", where x is an integer.
     public void number(IntConsumer printNumber) throws InterruptedException {
-        for (int i = 1; i <= n;i++){
+        for (int i = 1; i <= n; i++){
             sNum.acquire();
             if (i % 3 == 0 && i % 5 == 0){
                 s35.release();
             }else if (i % 3 == 0){
                 s3.release();
-            } else if (i % 5 == 0) {
+            }else if (i % 5 == 0){
                 s5.release();
             }else {
-                printNumber.accept(i);
                 sNum.release();
+                printNumber.accept(i);
             }
         }
     }
