@@ -57,4 +57,21 @@ public class IsSymmetric {
         }
         return recur(A1.left,A2.right) && recur(A1.right,A2.left);
     }
+
+    public boolean isSymmetric1(TreeNode root){
+        if (root == null){
+            return true;
+        }
+        return recur(root.left,root.right);
+    }
+
+    private boolean recur1(TreeNode A1,TreeNode A2){
+        if (A1 == null && A2 == null){
+            return true;
+        }
+        if (A1 == null || A2 == null || A1.val != A2.val){
+            return false;
+        }
+        return recur1(A1.left,A2.right) && recur1(A1.right,A2.left);
+    }
 }
