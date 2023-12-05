@@ -25,7 +25,7 @@ public class IsStraight {
      * 输入: [0,0,1,2,5]
      * 输出: True
      */
-    //思路分析：搜线sort一下，然后循环处理
+    //思路分析：首先sort一下，然后循环处理，循环处理中注意大小王的个数进行替换
     public static boolean isStraight(int[] nums) {
         boolean flag = true;
         //快速排序整理
@@ -80,7 +80,7 @@ public class IsStraight {
     }
     //思路2:除大小王外，所有牌 无重复 ；
     //设此 555 张牌中最大的牌为 maxmaxmax ，最小的牌为 minminmin （大小王除外），则需满足：
-    //max−min<5max - min < 5
+    //max−min<5 max - min < 5
     //max−min<5
     //
 
