@@ -38,4 +38,11 @@ public class MaxSubArray {
         }
         return max;
     }
+
+    public static void main(String[] args) {
+        int i = 0;
+        System.out.println(++i);
+        int j = 0;
+        System.out.println(j++);
+    }
 }
