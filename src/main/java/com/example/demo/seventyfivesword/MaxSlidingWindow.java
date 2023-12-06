@@ -33,11 +33,7 @@ public class MaxSlidingWindow {
     //2、滑动窗口，对比每次的  deletedHead push max
     public int[] maxSlidingWindow(int[] nums, int k) {
         int n = nums.length;
-        PriorityQueue<int[]> pq = new PriorityQueue<int[]>(new Comparator<int[]>() {
-            public int compare(int[] pair1, int[] pair2) {
-                return pair1[0] != pair2[0] ? pair2[0] - pair1[0] : pair2[1] - pair1[1];
-            }
-        });
+        PriorityQueue<int[]> pq = new PriorityQueue<>((pair1, pair2) -> pair1[0] != pair2[0] ? pair2[0] - pair1[0] : pair2[1] - pair1[1]);
         for (int i = 0; i < k; ++i) {
             pq.offer(new int[]{nums[i], i});
         }
@@ -108,11 +104,39 @@ public class MaxSlidingWindow {
         //窗口已形成的场景
         for (int j = k;j < nums.length; j++){
             //窗口移动，删除前置节点
+            // i-k是已经在区间外了，如果首位等于nums[i-k]，那么说明此时首位值已经不再区间内了，需要删除
             if (deque.peekFirst() == nums[j-k]){
                 deque.removeFirst();
             }
             //保证数组的降序
             while (deque.size() > 0 && nums[j] > deque.peekLast()){
+                deque.removeLast();
+            }
+            deque.addLast(nums[j]);
+            result[index++] = deque.peekFirst();
+        }
+        return result;
+    }
+    public int[] maxSlidingWindow4(int[] nums,int k){
+        if (nums.length == 0){
+            return nums;
+        }
+        Deque<Integer> deque = new LinkedList<>();
+        int[] result = new int[nums.length - 1 -k];
+        int index = 0;
+        //窗口尚未形成
+        for (int i = 0; i < k; i++){
+            while (deque.size() > 0 && nums[i] > deque.peekFirst()){
+                deque.removeLast();
+            }
+            deque.addLast(nums[i]);
+        }
+        result[index++] = deque.peekFirst();
+        for (int j = k; j < nums.length; j++){
+            if (deque.peekFirst() == nums[j-k]){
+                deque.removeFirst();
+            }
+            while (deque.size() > 0 && nums[j] > deque.peekFirst()){
                 deque.removeLast();
             }
             deque.addLast(nums[j]);
