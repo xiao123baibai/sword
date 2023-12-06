@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.PriorityQueue;
 
 /**
- * 股票的最大利润
+ * 121-股票的最大利润
  */
 public class MaxProfit {
     /**
@@ -26,7 +26,7 @@ public class MaxProfit {
      * 输出: 0
      * 解释: 在这种情况下, 没有交易完成, 所以最大利润为 0。
      */
-    //思路：寻找最小节点，寻早最大节点  优先队列寻找较小节点信息，从较小节点后面寻找最大的节点
+    //思路：寻找最小节点，寻早最大节点  优先队列寻找较小节点信息，从较小节点后面寻找最大的节点--该解法不适合这个题
     public int maxProfit(int[] prices) {
         if (prices.length < 2){
             return 0;
@@ -57,4 +57,14 @@ public class MaxProfit {
         return res;
     }
     //思路二：
+    public int maxProfit1(int[] prices){
+        int ans = 0;
+        int cost = 0;
+        for (int i = 0; i < prices.length; i++){
+            int price = prices[i];
+            cost = Math.min(cost,price);
+            ans = Math.max(ans,price-cost);
+        }
+        return ans;
+    }
 }
