@@ -6,7 +6,7 @@ import java.util.List;
 import static org.apache.commons.lang3.ArrayUtils.add;
 
 /**
- *  汇总区间
+ *  228-汇总区间
  */
 public class SummaryRanges {
     /**
@@ -110,5 +110,26 @@ public class SummaryRanges {
     public static void main(String[] args) {
         int[] arr = new int[]{0,2,3,4,6,8,9};
         summaryRanges(arr);
+    }
+
+    public List<String> summaryRanges2(int[] nums){
+        List<String> reslist = new ArrayList<>();
+        int len = nums.length;
+        int i = 0;
+        while (i < len){
+            int low = i;
+            i++;
+            while (i < len && nums[i] == nums[i-1]+1){
+                i++;
+            }
+            int high = i - 1;
+            StringBuilder strb = new StringBuilder(Integer.toString(nums[low]));
+            if (low < high){
+                strb.append("->");
+                strb.append(nums[high]);
+            }
+            reslist.add(strb.toString());
+        }
+        return reslist;
     }
 }
