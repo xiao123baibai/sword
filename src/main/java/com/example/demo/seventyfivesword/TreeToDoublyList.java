@@ -20,7 +20,7 @@ public class TreeToDoublyList {
         while (root == null){
             return null;
         }
-        //循环二叉树存入优先队列
+        //循环二叉树存入优先队列 广度搜索遍历
         Queue<Integer> priorityQueueAsc = new PriorityQueue<>();
         Queue<NodeNew> queue = new LinkedList<>();
         queue.add(root);
@@ -40,7 +40,7 @@ public class TreeToDoublyList {
         head.left = headNode;
         NodeNew first = headNode;
         Iterator<Integer> iterator = priorityQueueAsc.iterator();
-        while (iterator.hasNext()){
+        while (!priorityQueueAsc.isEmpty()){
             int val = priorityQueueAsc.poll();
             NodeNew temp = new NodeNew(val);
             first.left = temp;
