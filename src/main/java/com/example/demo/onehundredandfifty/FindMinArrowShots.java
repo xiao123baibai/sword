@@ -48,18 +48,15 @@ public class FindMinArrowShots {
         if (points.length == 0){
             return 0;
         }
-        Arrays.sort(points, Comparator.comparingInt(o -> o[0]));
-        List<int[]> ans = new ArrayList<>();
-        int len = points.length;
-        for (int i = 0; i < len; i++){
-            int L = points[i][0];
-            int R = points[i][1];
-            if (ans.size() ==0 || ans.get(ans.size()-1)[1] < L){
-                ans.add(new int[]{L,R});
-            }else {
-                ans.get(ans.size()-1)[1] = Math.max(ans.get(ans.size()-1)[1],R);
+        Arrays.sort(points, Comparator.comparingInt(o -> o[1]));
+        int ans = 1;
+        int pos = points[0][1];
+        for (int[] sub : points){
+            if(sub[0] > pos){
+                pos = sub[1];
+                ans++;
             }
         }
-        return ans.size();
+        return ans;
     }
 }
