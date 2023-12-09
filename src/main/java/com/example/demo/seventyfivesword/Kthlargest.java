@@ -50,7 +50,7 @@ public class Kthlargest {
     public static int kthLargest(TreeNode root) {
         //遍历，然后排序
         dfs(root);
-        return 1;
+        return res;
     }
 
     private static void dfs(TreeNode root){
