@@ -64,7 +64,7 @@ public class TwoSum2 {
             if (map.containsKey(target - nums[i])){
                 twoSum[0] = i;
                 twoSum[1] = map.get(target-nums[i]);
-
+                break;
             }
             map.put(nums[i],i);
         }
