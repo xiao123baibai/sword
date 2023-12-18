@@ -4,7 +4,7 @@ import java.util.LinkedList;
 import java.util.Queue;
 
 /**
- * 二叉树的镜像
+ * 二叉树的镜像-226
  */
 public class MirrorTree {
     /**
@@ -50,8 +50,17 @@ public class MirrorTree {
         root.left = mirrorTree1(temp);
         return root;
     }
+
+    public static void main(String[] args) {
+        TreeNode node1 = new TreeNode(2);
+        TreeNode node2 = new TreeNode(1);
+        TreeNode node3 = new TreeNode(3);
+        node1.left = node2;
+        node1.right = node3;
+        mirrorTree(node1);
+    }
     //循环遍历法
-    public TreeNode mirrorTree(TreeNode root){
+    public static TreeNode mirrorTree(TreeNode root){
         if(root == null){
             return root;
         }
@@ -65,6 +74,7 @@ public class MirrorTree {
             if (t.right != null){
                 queue.add(t.right);
             }
+            //放入队列之后，调整原来的数据结构，因为要返回的对象是root
             TreeNode temp = t.right;
             t.right = t.left;
             t.left = temp;
