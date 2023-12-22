@@ -46,6 +46,34 @@ public class Convert {
      * s 由英文字母（小写和大写）、',' 和 '.' 组成
      * 1 <= numRows <= 1000
      */
+
+    public static String convert2(String s, int numRows){
+        int n = s.length(), r = numRows;
+        if (r == 1 || r >= n) {
+            return s;
+        }
+        int t = r * 2 - 2;
+        int c = (n/ t * (r - 1))+1;
+        char[][] mat = new char[r][c];
+        for (int i = 0, x = 0, y = 0; i < n; ++i) {
+            mat[x][y] = s.charAt(i);
+            if (i % t < r - 1) {
+                ++x; // 向下移动
+            } else {
+                --x;
+                ++y; // 向右上移动
+            }
+        }
+        StringBuffer ans = new StringBuffer();
+        for (char[] row : mat) {
+            for (char ch : row) {
+                if (ch != 0) {
+                    ans.append(ch);
+                }
+            }
+        }
+        return ans.toString();
+    }
     //使用二维数组实现字母的分布，然后一行一行循环获取最终的结果
     public static String convert(String s, int numRows) {
         int len = s.length();
@@ -85,12 +113,12 @@ public class Convert {
     }
 
     public static void main(String[] args) {
-        String s = "PAYPALISHIRING";
-        convert1(s,3);
+        String s = "ABCDE";
+        convert2(s,4);
     }
     public static String convert1(String s, int numRows) {
         if(numRows < 2) return s;
-        List<StringBuilder> rows = new ArrayList<StringBuilder>();
+        List<StringBuilder> rows = new ArrayList<>();
         for(int i = 0; i < numRows; i++) rows.add(new StringBuilder());
         int i = 0, flag = -1;
         for(char c : s.toCharArray()) {
