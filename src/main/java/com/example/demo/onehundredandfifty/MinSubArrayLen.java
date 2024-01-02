@@ -35,8 +35,8 @@ public class MinSubArrayLen {
         while (right < n){
             sum += nums[right];
             if (sum >= target){
-                res = Math.max(res,right-left+1);
-                sum -= nums[left--];
+                res = Math.min(res,right-left+1);
+                sum -= nums[left++];
             }else if (sum < target){
                 right++;
             }
