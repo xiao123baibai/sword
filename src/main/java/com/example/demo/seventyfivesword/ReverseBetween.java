@@ -31,7 +31,7 @@ public class ReverseBetween {
      * 1 <= left <= right <= n
      */
     //使用栈存储需要反转的位置，，新建一个链表，存储初始化的位置，然后使用一个数组存储后面的位置
-    public static ListNode reverseBetween(ListNode head, int left, int right) {
+    public ListNode reverseBetween(ListNode head, int left, int right) {
         int start = left;
         int end = right;
         ListNode curr = head;
@@ -64,7 +64,7 @@ public class ReverseBetween {
         node2.next = node3;
         node3.next = node4;
         node4.next = node5;
-        reverseBetween(node1,2,4);
+//        reverseBetween(node1,2,4);
     }
 
     class ListNode1 {
