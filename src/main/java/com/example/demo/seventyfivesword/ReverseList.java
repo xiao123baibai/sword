@@ -1,8 +1,6 @@
 package com.example.demo.seventyfivesword;
 
 
-import java.util.List;
-
 /**
  * 反转链表
  */
@@ -30,11 +28,11 @@ public class ReverseList {
      * @param head
      * @return
      */
-    public ListNode reverseList1(ListNode head){
-        ListNode pre = null;
-        ListNode curr = head;
+    public ListNode2 reverseList1(ListNode2 head){
+        ListNode2 pre = null;
+        ListNode2 curr = head;
         while (curr != null){
-            ListNode next = curr.next;
+            ListNode2 next = curr.next;
             curr.next = pre;
             pre = curr;
             curr = next;
@@ -98,23 +96,23 @@ public class ReverseList {
      * @param head
      * @return
      */
-    public static ListNode reverseList2(ListNode head){
+    public static ListNode2 reverseList2(ListNode2 head){
         if (head == null || head.next == null){
             return head;
         }
-        ListNode newhead = reverseList2(head.next);
+        ListNode2 newhead = reverseList2(head.next);
         head.next.next = head;
         head.next = null;
         return  newhead;
     }
 
     public static void main(String[] args) {
-        ListNode n1 = new ListNode(1);
-        ListNode n2 = new ListNode(2);
-        ListNode n3 = new ListNode(3);
-        ListNode n4 = new ListNode(4);
-        ListNode n5 = new ListNode(5);
-        ListNode n6 = new ListNode(6);
+        ListNode2 n1 = new ListNode2(1);
+        ListNode2 n2 = new ListNode2(2);
+        ListNode2 n3 = new ListNode2(3);
+        ListNode2 n4 = new ListNode2(4);
+        ListNode2 n5 = new ListNode2(5);
+        ListNode2 n6 = new ListNode2(6);
         n1.next = n2;
         n2.next = n3;
         n3.next = n4;

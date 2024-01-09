@@ -20,7 +20,7 @@ public class GetKthFromEnd {
      * 返回链表 4->5.
      */
     //辅助栈法
-    private ListNode getKthFromEnd1(ListNode head,int k){
+    private ListNode2 getKthFromEnd1(ListNode2 head, int k){
         //使用stack存储，倒叙取出到list中，然后循环组装链表
         //   Stack<ListNode> nodeStack = new Stack<>();
         //   ListNode pre = head;
@@ -33,11 +33,11 @@ public class GetKthFromEnd {
         //       res = nodeStack.pop();
         //   }
         //   return res;
-        ListNode result = null;
+        ListNode2 result = null;
         if (head == null){
             return null;
         }
-        LinkedList<ListNode> stack = new LinkedList<>();
+        LinkedList<ListNode2> stack = new LinkedList<>();
         while (head != null){
             stack.add(head);
             head = head.next;
@@ -50,10 +50,10 @@ public class GetKthFromEnd {
         return result;
     }
     //遍历法
-    private ListNode getKthFromEnd2(ListNode head,int k){
-        ListNode result = null;
+    private ListNode2 getKthFromEnd2(ListNode2 head, int k){
+        ListNode2 result = null;
         int n = 0;
-        ListNode cur = head;
+        ListNode2 cur = head;
         while (cur != null){
             n++;
             cur = cur.next;
@@ -67,9 +67,9 @@ public class GetKthFromEnd {
         return result;
     }
     //双指针法
-    private ListNode getKthFromEnd3(ListNode head,int k){
-        ListNode firstNode = head;
-        ListNode secondNode = head;
+    private ListNode2 getKthFromEnd3(ListNode2 head, int k){
+        ListNode2 firstNode = head;
+        ListNode2 secondNode = head;
         while (k > 0){
             k--;
             firstNode = firstNode.next;
@@ -82,9 +82,9 @@ public class GetKthFromEnd {
     }
 
     //辅助栈法
-    private ListNode getKthFromEnd11(ListNode head,int k){
-        LinkedList<ListNode> stack = new LinkedList<>();
-        ListNode curr = head;
+    private ListNode2 getKthFromEnd11(ListNode2 head, int k){
+        LinkedList<ListNode2> stack = new LinkedList<>();
+        ListNode2 curr = head;
         while (curr != null){
             stack.add(curr);
             curr = curr.next;
@@ -96,9 +96,9 @@ public class GetKthFromEnd {
         }
     }
     //遍历
-    private ListNode getKthFromEnd22(ListNode head,int k){
-        ListNode res = null;
-        ListNode curr = head;
+    private ListNode2 getKthFromEnd22(ListNode2 head, int k){
+        ListNode2 res = null;
+        ListNode2 curr = head;
         int n = 0;
         while (curr != null){
             n++;
@@ -113,9 +113,9 @@ public class GetKthFromEnd {
         return res;
     }
     //双指针法
-    private ListNode getKthFromEnd33(ListNode head,int k){
-        ListNode first = head;
-        ListNode second = head;
+    private ListNode2 getKthFromEnd33(ListNode2 head, int k){
+        ListNode2 first = head;
+        ListNode2 second = head;
         while (k > 0){
             k--;
             first = first.next;

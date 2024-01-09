@@ -40,8 +40,8 @@ public class ReverseKGroup {
 
     //思路：分成多个局部反转链表，统计总体的长度，然后进行循环处理
 
-    public ListNode reverseKGroup(ListNode head, int k) {
-        ListNode curr = head;
+    public ListNode2 reverseKGroup(ListNode2 head, int k) {
+        ListNode2 curr = head;
         int len = 0;
         while (curr != null){
             curr = curr.next;
@@ -56,18 +56,18 @@ public class ReverseKGroup {
         return head;
     }
 
-    public ListNode reverseBetween(ListNode head, int left, int right) {
+    public ListNode2 reverseBetween(ListNode2 head, int left, int right) {
         int start = left;
         int end = right;
-        ListNode curr = head;
-        Map<Integer,ListNode> map = new HashMap<>();
+        ListNode2 curr = head;
+        Map<Integer, ListNode2> map = new HashMap<>();
         Integer index = 0;
         while (curr != null){
-            map.put(index++,new ListNode(curr.val));
+            map.put(index++,new ListNode2(curr.val));
             curr = curr.next;
         }
-        ListNode res = new ListNode(-1);
-        ListNode headRes = res;
+        ListNode2 res = new ListNode2(-1);
+        ListNode2 headRes = res;
         for (int i = 0; i < map.size(); i++){
             if(i >= left && i <= right && end >= start){
                 res.next = map.get(end--);

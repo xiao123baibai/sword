@@ -35,10 +35,10 @@ public class RemoveNthFromEnd {
      * 进阶：你能尝试使用一趟扫描实现吗？
      */
     // 使用栈的时间和空间的复杂度都是O(n),使用长度计算和双指针的时间复杂度是O(n),空间复杂度是O(1)
-    public ListNode removeNthFromEnd(ListNode head, int n){
-        ListNode temp = new ListNode(0, head);
-        ListNode first = head;
-        ListNode second = temp;
+    public ListNode2 removeNthFromEnd(ListNode2 head, int n){
+        ListNode2 temp = new ListNode2(0, head);
+        ListNode2 first = head;
+        ListNode2 second = temp;
         while (n > 0){
             n--;
             first = first.next;
@@ -54,10 +54,10 @@ public class RemoveNthFromEnd {
 }
 class ListNode {
     int val;
-    ListNode next;
+    ListNode2 next;
     ListNode() {}
     ListNode(int val) { this.val = val; }
-    ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+    ListNode(int val, ListNode2 next) { this.val = val; this.next = next; }
 }
 
 

@@ -31,18 +31,18 @@ public class ReverseBetween {
      * 1 <= left <= right <= n
      */
     //使用栈存储需要反转的位置，，新建一个链表，存储初始化的位置，然后使用一个数组存储后面的位置
-    public ListNode reverseBetween(ListNode head, int left, int right) {
+    public ListNode2 reverseBetween(ListNode2 head, int left, int right) {
         int start = left;
         int end = right;
-        ListNode curr = head;
-        Map<Integer,ListNode> map = new HashMap<>();
+        ListNode2 curr = head;
+        Map<Integer, ListNode2> map = new HashMap<>();
         Integer index = 1;
         while (curr != null){
-            map.put(index++,new ListNode(curr.val));
+            map.put(index++,new ListNode2(curr.val));
             curr = curr.next;
         }
-        ListNode res = new ListNode(-1);
-        ListNode headRes = res;
+        ListNode2 res = new ListNode2(-1);
+        ListNode2 headRes = res;
         for (int i = 1; i <= map.size(); i++){
             if(i >= left && i <= right && end >= start){
                 res.next = map.get(end--);
@@ -55,11 +55,11 @@ public class ReverseBetween {
     }
 
     public static void main(String[] args) {
-        ListNode node1 = new ListNode(1);
-        ListNode node2 = new ListNode(2);
-        ListNode node3 = new ListNode(3);
-        ListNode node4 = new ListNode(4);
-        ListNode node5 = new ListNode(5);
+        ListNode2 node1 = new ListNode2(1);
+        ListNode2 node2 = new ListNode2(2);
+        ListNode2 node3 = new ListNode2(3);
+        ListNode2 node4 = new ListNode2(4);
+        ListNode2 node5 = new ListNode2(5);
         node1.next = node2;
         node2.next = node3;
         node3.next = node4;

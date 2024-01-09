@@ -14,12 +14,12 @@ public class GetIntersectionNode {
      */
 
     //思路：双指针法
-    ListNode getIntersectionNode1(ListNode headA, ListNode headB) {
+    ListNode2 getIntersectionNode1(ListNode2 headA, ListNode2 headB) {
         if (headA == null || headB == null){
             return null;
         }
-        ListNode tempA = headA;
-        ListNode tempB = headB;
+        ListNode2 tempA = headA;
+        ListNode2 tempB = headB;
         while (tempA != tempB){
             tempA = (tempA == null ? headB:tempA.next);
             tempB = (tempB == null ? headA:tempB.next);
@@ -27,12 +27,12 @@ public class GetIntersectionNode {
         return tempB;
     }
 
-    ListNode getIntersectionNode11(ListNode headA, ListNode headB){
+    ListNode2 getIntersectionNode11(ListNode2 headA, ListNode2 headB){
         if (headA == null || headB == null){
             return null;
         }
-        ListNode tempA = headA;
-        ListNode tempB = headB;
+        ListNode2 tempA = headA;
+        ListNode2 tempB = headB;
         while (tempA != tempB){
             tempA = (tempA == null ? headB:tempA.next);
             tempB = (tempB == null ? headA:tempB.next);
@@ -41,8 +41,8 @@ public class GetIntersectionNode {
     }
 
     //遍历
-    ListNode getIntersectionNode2(ListNode headA, ListNode headB) {
-        Set<ListNode> nodeSet = new HashSet<>();
+    ListNode2 getIntersectionNode2(ListNode2 headA, ListNode2 headB) {
+        Set<ListNode2> nodeSet = new HashSet<>();
         while (headA != null){
             nodeSet.add(headA);
             headA = headA.next;
@@ -56,8 +56,8 @@ public class GetIntersectionNode {
         return null;
     }
 
-    ListNode getIntersectionNode22(ListNode headA, ListNode headB){
-        Set<ListNode> nodeSet = new HashSet<>();
+    ListNode2 getIntersectionNode22(ListNode2 headA, ListNode2 headB){
+        Set<ListNode2> nodeSet = new HashSet<>();
         while (headA != null){
             nodeSet.add(headA);
             headA = headA.next;

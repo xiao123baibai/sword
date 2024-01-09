@@ -1,7 +1,5 @@
 package com.example.demo.seventyfivesword;
 
-import java.util.List;
-
 /**
  * 删除链表的节点
  */
@@ -27,15 +25,15 @@ public class DeleteNode {
      * @param val
      * @return
      */
-    public static ListNode deleteNode(ListNode head, int val){
+    public static ListNode2 deleteNode(ListNode2 head, int val){
         if (head == null){
             return head;
         }
         if (head.val == val){
             return head.next;
         };
-        ListNode res = head;
-        ListNode curr = head.next;
+        ListNode2 res = head;
+        ListNode2 curr = head.next;
         while (curr != null){
             if (curr.val == val){
                 res.next = curr.next;
@@ -48,15 +46,15 @@ public class DeleteNode {
         return head;
     }
 
-    public ListNode deleteNode1(ListNode head, int val){
+    public ListNode2 deleteNode1(ListNode2 head, int val){
         if (head == null){
             return head;
         }
         if (head.val == val){
             return head.next;
         }
-        ListNode res = head;
-        ListNode curr = head.next;
+        ListNode2 res = head;
+        ListNode2 curr = head.next;
         while (curr != null){
             if (curr.val == val){
                 res.next = curr.next;
@@ -69,18 +67,18 @@ public class DeleteNode {
     }
 
     public static void main(String[] args) {
-        ListNode n1 = new ListNode(-1);
-        ListNode n2 = new ListNode(2);
-        ListNode n3 = new ListNode(-3);
-        ListNode n4 = new ListNode(4);
-        ListNode n5 = new ListNode(-5);
-        ListNode n6 = new ListNode(6);
+        ListNode2 n1 = new ListNode2(-1);
+        ListNode2 n2 = new ListNode2(2);
+        ListNode2 n3 = new ListNode2(-3);
+        ListNode2 n4 = new ListNode2(4);
+        ListNode2 n5 = new ListNode2(-5);
+        ListNode2 n6 = new ListNode2(6);
         n1.next = n2;
         n2.next = n3;
         n3.next = n4;
         n4.next = n5;
         n5.next = n6;
-        ListNode result = deleteNode(n1,6);
+        ListNode2 result = deleteNode(n1,6);
 
     }
 }
