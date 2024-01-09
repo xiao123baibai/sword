@@ -46,15 +46,16 @@ public class ReversePrint {
         recur(head.next);
         temp.add(head.val);
     }
+    class ListNode {
+        int val;
+        ListNode next;
+
+        ListNode(int x) {
+            val = x;
+        }
+    }
 }
 
  //Definition for singly-linked list.
- class ListNode {
-     int val;
-     ListNode next;
 
-     ListNode(int x) {
-         val = x;
-     }
- }
 
