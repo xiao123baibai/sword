@@ -3,7 +3,7 @@ package com.example.demo.onehundredandfifty;
 import java.util.Arrays;
 
 /**
- * 合并两个有序数组
+ * 88. 合并两个有序数组
  */
 public class Merge {
     /**
@@ -67,5 +67,22 @@ public class Merge {
             nums1[m+i] = nums2[i];
         }
         Arrays.sort(nums1);
+    }
+    public void merge3(int[] nums1, int m, int[] nums2, int n){
+        int p = m - 1, q = n-1;
+        int tail = m + n -1;
+        int cur;
+        while (p >= 0 || q >= 0){
+            if (p == -1){
+                cur = nums2[q--];
+            } else if (p == -1) {
+                cur = nums1[q--];
+            }else if (nums1[p] > nums2[q]){
+                cur = nums1[p--];
+            }else {
+                cur = nums2[q--];
+            }
+            nums1[tail--] = cur;
+        }
     }
 }
