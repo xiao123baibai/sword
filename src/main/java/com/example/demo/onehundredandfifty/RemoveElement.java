@@ -3,7 +3,7 @@ package com.example.demo.onehundredandfifty;
 import java.util.Arrays;
 
 /**
- * 移除元素
+ * 27. 移除元素
  */
 public class RemoveElement {
     /**
@@ -71,6 +71,18 @@ public class RemoveElement {
             start++;
             end--;
         }
+    }
+    //快慢指针法
+    public int removeElement3(Integer[] nums, int val){
+        int len = nums.length;
+        int left = 0;
+        for (int right = 0; right < len; right++){
+            if (nums[right] != val){
+                nums[left] = nums[right];
+                left++;
+            }
+        }
+        return left;
     }
     //双指针用法
     public static int removeElement1(Integer[] nums, int val){
