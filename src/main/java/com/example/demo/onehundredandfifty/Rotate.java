@@ -1,7 +1,7 @@
 package com.example.demo.onehundredandfifty;
 
 /**
- * 轮转数组
+ * 189. 轮转数组
  */
 public class Rotate {
     /**
@@ -112,9 +112,10 @@ public class Rotate {
     }
     //思路2:翻转数组
     public void rotate12(int[] nums, int k){
-        reverse1(nums,0, nums.length);
+        k %= nums.length;
+        reverse1(nums,0, nums.length-1);
         reverse1(nums,0,k-1);
-        reverse1(nums,k,nums.length);
+        reverse1(nums,k,nums.length-1);
     }
     private void reverse1(int[] nums, int start,int end){
         while (start < end){
