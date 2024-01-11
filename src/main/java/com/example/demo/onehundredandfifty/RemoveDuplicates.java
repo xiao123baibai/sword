@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 删除有序数组中的重复项
+ * 26. 删除有序数组中的重复项
  */
 public class RemoveDuplicates {
     /**
@@ -56,7 +56,7 @@ public class RemoveDuplicates {
                 right--;
             }
         }
-        sort1(nums,0,left);
+        sort1(nums,0,left-1);
         return left;
     }
     public int[] sort1(int[] arr,int left, int right){
