@@ -22,7 +22,7 @@ public class InvertTree {
      * 树中节点数目范围在 [0, 100] 内
      * -100 <= Node.val <= 100
      */
-    //广度搜索
+    //广度搜索--变换每个节点的左右节点然后，存储到栈中
     public TreeNode invertTree(TreeNode root) {
         if (root == null){
             return null;
