@@ -68,6 +68,8 @@ public class maxProfit2 {
         return profit;
     }
 
+
+
     //思路1:贪心算法
     public int maxProfit11(int[] prices){
         int profit = 0;
