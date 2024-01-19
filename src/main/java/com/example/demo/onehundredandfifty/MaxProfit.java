@@ -1,5 +1,7 @@
 package com.example.demo.onehundredandfifty;
 
+import java.util.*;
+
 /**
  * 121. 买卖股票的最佳时机
  */
@@ -44,10 +46,10 @@ public class MaxProfit {
         return maxProfit;
     }
 
-    public static void main(String[] args) {
-        int[] nums = new int[]{7,1,5,3,6,4};
-        maxProfit(nums);
-    }
+//    public static void main(String[] args) {
+//        int[] nums = new int[]{7,1,5,3,6,4};
+//        maxProfit(nums);
+//    }
 
     public int maxProfit1(int[] prices){
         int profit = 0;
@@ -57,5 +59,32 @@ public class MaxProfit {
             min = Math.min(min,prices[i]);
         }
         return profit;
+    }
+
+    public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
+        // 注意 hasNext 和 hasNextLine 的区别
+        while (in.hasNextInt()) { // 注意 while 处理多个 case
+            int a = in.nextInt();
+            ArrayList<String> list = new ArrayList<>();
+            for(int i = 0 ; i < a; i++){
+                String s = in.next();
+                list.add(s);
+            }
+            list.sort((s1, s2) -> {
+                int i = 0;
+                while(i < s1.length() && i < s2.length()){
+                    if(s1.charAt(i) > s2.charAt(i)){
+                        return 1;
+                    }else if(s1.charAt(i) < s2.charAt(i)){
+                        return -1;
+                    }else{
+                        i++;
+                    }
+                }
+                return s1.length() - s2.length();
+            });
+            list.forEach(System.out::println);
+        }
     }
 }
