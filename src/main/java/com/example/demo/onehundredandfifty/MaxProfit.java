@@ -62,29 +62,150 @@ public class MaxProfit {
     }
 
     public static void main(String[] args) {
+        int a = 0, b = 0, c = 0, d = 0, e = 0, error = 0, p = 0;
         Scanner in = new Scanner(System.in);
         // 注意 hasNext 和 hasNextLine 的区别
-        while (in.hasNextInt()) { // 注意 while 处理多个 case
-            int a = in.nextInt();
-            ArrayList<String> list = new ArrayList<>();
-            for(int i = 0 ; i < a; i++){
-                String s = in.next();
-                list.add(s);
+        while (in.hasNextLine()) { // 注意 while 处理多个 case
+            String s = in.nextLine();
+            String[] sArr = s.split("~");
+            if(isA(sArr[0]) && isA(sArr[1])){
+                a++;
+            }else if(isB(sArr[0]) && isB(sArr[1])){
+                b++;
+            }else if(isC(sArr[0]) && isC(sArr[1])){
+                c++;
+            }else if(isD(sArr[0]) && isD(sArr[1])){
+                d++;
+            }else if(isE(sArr[0]) && isE(sArr[1])){
+                e++;
+            }else if(isIgnore(sArr[0]) || isIgnore(sArr[1])){
+                continue;
+            }else if((isPrivateOne(sArr[0]) || isPrivateTwo(sArr[0]) || isPrivateThree(sArr[0])) &&
+                    (isPrivateOne(sArr[1]) || isPrivateTwo(sArr[1]) || isPrivateThree(sArr[1]))){
+                p++;
+            }else{
+                error++;
             }
-            list.sort((s1, s2) -> {
-                int i = 0;
-                while(i < s1.length() && i < s2.length()){
-                    if(s1.charAt(i) > s2.charAt(i)){
-                        return 1;
-                    }else if(s1.charAt(i) < s2.charAt(i)){
-                        return -1;
-                    }else{
-                        i++;
-                    }
-                }
-                return s1.length() - s2.length();
-            });
-            list.forEach(System.out::println);
         }
+        System.out.println(a + " " + b + " " + c + " " + d + " " + e + " " + error + " " + p);
+    }
+    private static boolean isA(String str) {
+        Integer[] A1 = new Integer[] {1, 0, 0, 0};
+        Integer[] A2 = new Integer[] {126, 255, 255, 255};
+        String[] arr = str.split("\\.");
+        if (arr.length < 4){
+            return false;
+        }
+        for (int i = 0; i < 4; i++) {
+            if (arr[i].equals("") || Integer.valueOf(arr[i]) < A1[i] || Integer.valueOf(arr[i]) > A2[i]) {
+                return false;
+            }
+        }
+        return true;
+    }
+    private static boolean isB(String str) {
+        Integer[] B1 = new Integer[] {128, 0, 0, 0};
+        Integer[] B2 = new Integer[] {191, 255, 255, 255};
+        String[] arr = str.split("\\.");
+        if (arr.length < 4){
+            return false;
+        }
+        for (int i = 0; i < 4; i++) {
+            if (arr[i].equals("") || Integer.valueOf(arr[i]) < B1[i] || Integer.valueOf(arr[i]) > B2[i]) {
+                return false;
+            }
+        }
+        return true;
+    }
+    private static boolean isC(String str) {
+        Integer[] C1 = new Integer[] {192, 0, 0, 0};
+        Integer[] C2 = new Integer[] {223, 255, 255, 255};
+        String[] arr = str.split("\\.");
+        if (arr.length < 4){
+            return false;
+        }
+        for (int i = 0; i < 4; i++) {
+            if (arr[i].equals("") || Integer.valueOf(arr[i]) < C1[i] || Integer.valueOf(arr[i]) > C2[i]) {
+                return false;
+            }
+        }
+        return true;
+    }
+    private static boolean isD(String str) {
+        Integer[] D1 = new Integer[] {224, 0, 0, 0};
+        Integer[] D2 = new Integer[] {239, 255, 255, 255};
+        String[] arr = str.split("\\.");
+        if (arr.length < 4){
+            return false;
+        }
+        for (int i = 0; i < 4; i++) {
+            if (arr[i].equals("") || Integer.valueOf(arr[i]) < D1[i] || Integer.valueOf(arr[i]) > D2[i]) {
+                return false;
+            }
+        }
+        return true;
+    }
+    private static boolean isE(String str) {
+        Integer[] E1 = new Integer[] {240, 0, 0, 0};
+        Integer[] E2 = new Integer[] {255, 255, 255, 255};
+        String[] arr = str.split("\\.");
+        if (arr.length < 4){
+            return false;
+        }
+        for (int i = 0; i < 4; i++) {
+            if (arr[i].equals("") || Integer.valueOf(arr[i]) < E1[i] || Integer.valueOf(arr[i]) > E2[i]) {
+                return false;
+            }
+        }
+        return true;
+    }
+    private static boolean isPrivateOne(String str) {
+        Integer[] one1 = new Integer[] {10, 0, 0, 0};
+        Integer[] one2 = new Integer[] {10, 255, 255, 255};
+        String[] arr = str.split("\\.");
+        if (arr.length < 4){
+            return false;
+        }
+        for (int i = 0; i < 4; i++) {
+            if (arr[i].equals("") || Integer.valueOf(arr[i]) < one1[i] || Integer.valueOf(arr[i]) > one2[i]) {
+                return false;
+            }
+        }
+        return true;
+    }
+    private static boolean isPrivateTwo(String str) {
+        Integer[] two1 = new Integer[] {172, 16, 0, 0};
+        Integer[] two2 = new Integer[] {172, 31, 255, 255};
+        String[] arr = str.split("\\.");
+        if (arr.length < 4){
+            return false;
+        }
+        for (int i = 0; i < 4; i++) {
+            if (arr[i].equals("") || Integer.valueOf(arr[i]) < two1[i] || Integer.valueOf(arr[i]) > two2[i]) {
+                return false;
+            }
+        }
+        return true;
+    }
+    private static boolean isPrivateThree(String str) {
+        Integer[] three1 = new Integer[] {192, 168, 0, 0};
+        Integer[] three2 = new Integer[] {192, 168, 255, 255};
+        String[] arr = str.split("\\.");
+        if (arr.length < 4){
+            return false;
+        }
+        for (int i = 0; i < 4; i++) {
+            if (arr[i].equals("") || Integer.valueOf(arr[i]) < three1[i] || Integer.valueOf(arr[i]) > three2[i]) {
+                return false;
+            }
+        }
+        return true;
+    }
+    private static boolean isIgnore(String str){
+        String[] arr = str.split("\\.");
+        if(Integer.valueOf(arr[0]) == 0 || Integer.valueOf(arr[0]) == 127){
+            return true;
+        }
+        return false;
     }
 }
