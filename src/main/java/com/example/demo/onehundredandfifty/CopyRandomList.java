@@ -52,7 +52,7 @@ public class CopyRandomList {
      */
     //思路：先使用hash表来存储，然后再循环一次新建一个链表
     public static Node copyRandomList(Node head) {
-        Map<Node,Node> map = new HashMap<>();
+        Map<Node, Node> map = new HashMap<>();
         Node temp = head;
         while (temp != null){
             map.put(temp, new Node(temp.val));
