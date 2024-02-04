@@ -44,7 +44,7 @@ public class BuildTree {
                     node = stack.pop();
                     inorderindex++;
                 }
-                node.right = new TreeNode(preorder[i]);
+                node.right = new TreeNode(preorderval);
                 stack.push(node.right);
             }
         }

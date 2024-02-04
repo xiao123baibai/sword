@@ -26,8 +26,8 @@ public class NumWays {
     public int numWays(int n){
         int res = 1;
         int l;
-        int r = 0;
-        for (int i = 1;i <= n;i++){
+        int r = 1;
+        for (int i = 1;i < n;i++){
             l = r;
             r = res;
             res = (l+r)%1000000007;

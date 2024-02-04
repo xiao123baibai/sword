@@ -55,7 +55,7 @@ public class FindContinuousSequence {
                 r++;//因为要加，所以提前++
                 sum += r;
             }else if (sum > target){
-                sum -= l;//因为要减，所以先减后减减
+                sum -= l;//因为要减，所以先减然后本身++
                 l++;
             }else {
                 int[] sub = new int[r-l+1];

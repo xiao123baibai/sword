@@ -144,7 +144,7 @@ public class MaxSlidingWindow {
         }
         return result;
     }
-    //优先队列
+    //优先队列---更好理解
     public int[] maxSlidingWindow3(int[] nums,int k){
         if (nums.length == 0){
             return nums;
@@ -165,7 +165,7 @@ public class MaxSlidingWindow {
         //形成滑动窗口，并处理左边出界问题
         for (int i = k;i < n;i++){
             pq.offer(new int[]{nums[i],i});
-            while (pq.peek()[i] <= n-k){
+            while (pq.peek()[1] <= i-k){
                 pq.poll();
             }
             ans[i-k+1] = pq.peek()[0];

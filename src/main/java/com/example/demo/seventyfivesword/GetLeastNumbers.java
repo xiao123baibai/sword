@@ -8,6 +8,7 @@ import java.util.Arrays;
 public class GetLeastNumbers {
     public int[] getLeastNumbers(int[] arr, int k) {
         arr = sort(arr,0,arr.length-1);
+//        Arrays.sort(arr);
         int[] ans = new int[k];
         for(int i = 0; i < arr.length; i++){
             ans[i] = arr[i];

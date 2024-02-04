@@ -54,14 +54,13 @@ public class DeleteNode {
             return head.next;
         }
         ListNode2 res = head;
-        ListNode2 curr = head.next;
-        while (curr != null){
-            if (curr.val == val){
-                res.next = curr.next;
+        while (res != null){
+            if (res.val == val){
+                res.next = res.next;
                 break;
             }
-            res = curr;
-            curr = curr.next;
+            res = res;
+            res = res.next;
         }
         return head;
     }

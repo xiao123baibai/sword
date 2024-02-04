@@ -1,7 +1,5 @@
 package com.example.demo.seventyfivesword;
 
-import java.time.temporal.Temporal;
-
 /**
  * 调整数组顺序使奇数位于偶数前面
  */
