@@ -15,6 +15,8 @@ public class LRUCacheTwo {
 
     private LRUNode tail;
 
+    private int x = 10;
+
     public LRUCacheTwo(int capacity){
         this.size = 0;
         this.capacity = capacity;
@@ -25,7 +27,12 @@ public class LRUCacheTwo {
     }
     public int get(int key){
         LRUNode node = cache.get(key);
+        long time = System.currentTimeMillis();
         if (node == null){
+            return -1;
+        }
+        if (time > node.removeTime){
+            removeNode(node);
             return -1;
         }
         moveHead(node);
@@ -34,8 +41,9 @@ public class LRUCacheTwo {
 
     public void put(int key, int value){
         LRUNode node = cache.get(key);
+        long time = System.currentTimeMillis() + x;
         if (node == null){
-            LRUNode newNode = new LRUNode(key, value);
+            LRUNode newNode = new LRUNode(key, value, time);
             addHead(newNode);
             size++;
             if (capacity < size){
@@ -45,6 +53,7 @@ public class LRUCacheTwo {
             }
         }else {
             node.val = value;
+            node.removeTime = time;
             moveHead(node);
         }
     }
@@ -74,13 +83,16 @@ public class LRUCacheTwo {
 class LRUNode{
     int key;
     int val;
+
+    long removeTime;
     LRUNode prev;
     LRUNode next;
 
     public LRUNode(){}
 
-    public LRUNode(int key,int val){
+    public LRUNode(int key,int val,long removeTime){
         this.key = key;
         this.val = val;
+        this.removeTime = removeTime;
     }
 }
