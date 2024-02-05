@@ -40,7 +40,7 @@ public class LongestCommonPrefix {
         char[] arr = firstStr.toCharArray();
         for (int i = 0; i < arr.length;i++){
             char subArr = arr[i];
-            for (int j = 0; j < strs.length;j++){
+            for (int j = i+1; j < strs.length;j++){
                 if (strs[j].length()-1 < i || strs[j].charAt(i)!=subArr){
                     prefix.append("");
                     return prefix.toString();

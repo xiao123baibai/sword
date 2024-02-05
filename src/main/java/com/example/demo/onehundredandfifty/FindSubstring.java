@@ -8,7 +8,7 @@ import java.util.List;
 import java.util.Map;
 
 /**
- * 串联所有单词的子串
+ * 串联所有单词的子串--有空写一遍
  */
 public class FindSubstring {
     /**
