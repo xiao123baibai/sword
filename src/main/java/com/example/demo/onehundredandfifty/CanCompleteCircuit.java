@@ -1,7 +1,7 @@
 package com.example.demo.onehundredandfifty;
 
 /**
- * 加油站
+ * 134. 加油站
  */
 public class CanCompleteCircuit {
     /**
@@ -62,10 +62,35 @@ public class CanCompleteCircuit {
                 }
                 k++;
             }
-            if (k == len){
+            if (k == len){//说明走完一圈了
                 return i;
             }else {
                 i = i + k + 1;
+            }
+        }
+        return -1;
+    }
+
+    //复习
+    public static int canCompleteCircuit1(int[] gas, int[] cost){
+        int len = gas.length;
+        int i = 0;
+        while(i < len){
+            int k = 0;
+            int sumGas = 0, sumCost = 0;
+            while(k < len){
+                int temp = (k + i) % len;
+                sumGas += gas[temp];
+                sumCost += cost[temp];
+                if(sumGas < sumCost){
+                    break;
+                }
+                k++;
+            }
+            if (k == len) {//走完一圈
+                return i;
+            }else {
+                i = i + k + 1;//之前的节点全部验证过了，只需要验证剩余的即可
             }
         }
         return -1;
